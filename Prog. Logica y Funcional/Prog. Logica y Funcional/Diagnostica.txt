@@ -1,0 +1,41 @@
+(#) == "Sotenido"
+
+Piano.
+
+En el teclado del piano las teclas son ciclicas, comenzamos con
+Do, Do#, Re, Re#, Mi, Fa, Fa#, Sol, Sol#, La, La# y Si.
+Un total de 12 notas, sin embargo un piano tiene mas de 12 teclas
+¿Qué toca la tecla 13, 14, 15 ...?
+bueno se repite el patron pero con un tono diferente por lo que la
+tecla 13 es Do, 14 es Do# y 15 es Re y asi, por eso se menciona que
+las teclas de un piano las teclas son ciclicas.
+
+Problema.
+
+Suponga que un piano se diseña para tener tantas teclas como se quiera
+Si elijo una tecla al azar, ¿Nota toca dicha tecla?
+
+Actividad
+Realice un programa que pida al usuario un numero entero positivo
+y que dicho programa nos proporcione que nota tocaria la tecla con 
+ese numero.
+
+
+Corrida de escritorio
+
+Dame un numero de tecla
+>1
+La nota es Do
+
+Dame un numero de tecla
+>13
+La nota es Do
+
+Dame un numero de tecla
+>169
+La nota es Do
+
+Dame un numero de tecla
+>99
+La nota es Re
+

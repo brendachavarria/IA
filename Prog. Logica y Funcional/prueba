@@ -1,0 +1,166 @@
+"""
+	En la gramatica de un lenguaje de programacion
+	se solicita la validacion de una sentencia
+	con la siguiente gramatica
+
+	<MateExpr> ::= <Operando> <OperMat> <Operando>
+	Donde
+	<Operando> ::= <IntByte> | <Registros>
+	<OperMat> ::=  + | - | * | /
+	<Registros> ::= RInt0 | RInt1 | RInt2 | RInt3
+	y
+	<IntByte> ::= 0..255 | 0x00..0xFF
+
+	por lo tanto las siguientes sentecias son validas:
+
+	RInt0 + RInt0
+	RInt0 - 10
+	RInt0 * 2
+
+	pero estas no:
+
+	RInt4 /  2
+	RInt0 /  /
+	RInt0 RInt1  +
+
+	defina un jerarquia de funciones que validen dicha
+	sentecia.
+
+"""
+import re
+def MateExpr(TextoEvaluar):
+	import re
+	print("LOGITUD")
+	print(len(TextoEvaluar))
+	def Operando(Lista):
+		print("Entro Operando Principal 1")
+		print(len(Lista))
+		print(Lista)
+		def IntByteDec(Cadena):
+			print("Entro IntByteDec")
+			print(len(Cadena))
+			numero = 0
+
+			numero = re.compile(r'^([1-9])$')
+			resul = numero.search(str(Cadena))
+			if (resul):
+				print("Entro IntByteDec (255)")
+				return True
+			else :
+				return False
+		def IntByteHex(Cadena):
+			if re.search('0[x][0-9A-F]{2}',str(Cadena)):
+			    return True
+			else:
+				return False
+		def Registros(Cadena):
+			print("Entro Registros")
+			print(Cadena)
+			num3 = re.compile(r'^(RInt0|RInt1|RInt2|RInt3)$')
+			resul3 = num3.search(str(Cadena))
+			if resul3:
+				print("Entro condicion segunda Registros")
+				return True
+			else:
+			    return False
+
+		if not Registros(Registro):
+			return False
+
+		if not OperMat(Operador):
+			return False
+
+		if 'x' in IntByte:
+			return IntByteHex(IntByte)
+		else:
+			return IntByteDec(IntByte)
+
+
+	def OperMat(Op):
+		print("Entro OperMat")
+		#print(len(Op))
+		print(Op)
+		if re.search('\\+|-|\\*|/',str(Op)):
+			print("EX")
+			#MateExpr(Op[1:])
+			#if Operando(IntByte):
+			return True
+			#else:
+			#	return False
+		else:
+			return False
+
+	def Operando2(Lista):
+		print("Entro Operando Principal 2")
+		#print(len(Lista))
+		#print(Lista)
+		def IntByteDec2(Cadena):
+			print("Entro IntByteDec 2")
+			#print(len(Cadena))
+			numero = 0
+
+			numero = numero + int(Cadena)
+			num = re.compile(r'^([1-9])$')
+			resul = num.search(str(numero))
+			if (resul):
+				print("Entro IntByteDec 2 (255)")
+				return OperMat(Operador)
+			else :
+				return False
+		def IntByteHex2(Cadena):
+			if re.search('0[x][0-9A-F]{2}',str(Cadena)):
+			    return True
+			else:
+				return False
+		def Registros2(Cadena):
+			print("Entro Registros")
+			if re.search('RInt0|RInt1|RInt2|RInt3',str(Cadena)):
+				print("Entro condicion Registros 2")
+				return True
+			else:
+				print("No Entro condicion Registros 2")
+
+				return False
+
+			#	return Operando2(Lista)
+			if Registros2(Lista):
+				if OperMat(Lista):
+					print("Regreso OperMat 2")
+				else:
+					print("No regreso OperMat 2")
+
+				if 'x' in IntByte:
+					return IntByteHex2(IntByte)
+				else:
+					return IntByteDec2(IntByte)
+
+		if 'x' in Registro:
+			return IntByteHex2(Registro)
+		else:
+			return IntByteDec2(Registro)
+
+		if not OperMat(Operador):
+			return False
+
+		if not Registros2(Registro):
+			return False
+
+
+
+	LTokens = TextoEvaluar.split(' ')
+
+	Registro,Operador,IntByte = LTokens
+
+	if Operando(Registro):
+		return True
+	else:
+		return Operando2(Registro)
+	#return Operando2(Registro)
+
+
+Expresion = input("Dame un expresion de registro valida \n")
+
+if MateExpr(Expresion):
+	print("Es valida")
+else:
+	print("No es valida")
