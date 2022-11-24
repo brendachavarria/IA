@@ -1,0 +1,21 @@
+rails new proyecto
+bundle install
+
+    inflect.irregular "actividad_alumnos", "actividades_alumnos"
+    inflect.irregular "actividad", "actividades"
+    inflect.irregular "docente", "docentes"
+
+rails g scaffold actividades_alumnos actividad_id:integer alumno_id:integer calificacion:float observaciones:string
+
+rails g scaffold alumnos carrera_id:integer user_id:integer no_control:integer semestre:integer nombre:string apellido_p:string apellido_m:string
+
+rails g scaffold carreras siglas:string carrera:string
+
+rails g scaffold actividades_tipos tipo:string
+
+rails g scaffold actividades tipo_id:integer docente_id:integer titulo:string descripcion:text
+
+rails g scaffold docentes user_id:integer nombre:string apellido_p:string apellido_m:string
+
+rails g scaffold users  
+

@@ -1,0 +1,16 @@
+TAREA DEL SCAFFOLD
+rails g scaffold carreras carrera:string
+rails g scaffold alumnos carrera_id:integer no_control:integer email:string nombre:string apellidos:string semestre:string
+rails g scaffold materias carrera_id:integer materias:string clave:string semestre:string creditos:integer
+rails g scaffold calificaciones alumno_id:integer materia_id:integer profesor_id:integer calificacion:integer fecha:datetime
+rails g scaffold profesores nombre:string apellidos:string email:string
+
+SCAFFOLDS DE PUNTO VENTA
+rails g model productos nombre:string precio_venta:float existencia:integer precio_compra:float ganancia float descripciont:string
+rails g controller productos index new update delete
+rails g scaffold proveedores razon_social:text rfc:string stitio_web:string
+rails g scaffold clientes rfc:string nombre:string apellidos:string celular:string credito:float
+rails g scaffold ventas cliente_id:integer fecha:date total:float
+rails g model ventas_items venta_id:integer producto_id:integer descripcion:text cantidad:float precio_venta:float importe:float
+
+NOTAS:los scaffold nos permiten crear los controladores y vistas a la vez en cambio los modelos no crean la vista.

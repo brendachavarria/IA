@@ -1,0 +1,5 @@
+rails g scaffold actividades_alumnos grupo_id:integer alumno_id:integer calificacion:float observaciones:string
+rails g scaffold actividades nombre:string tipo:string grupo_id:integer docente:string horario:string descripcion:string cupo:integer inscritos:integer
+rails g scaffold carreras nombre:string siglas:string 
+
+rails g scaffold direcciones calle:string num_exterior:integer num_interior:integer colonia:string municipio:string estado:string cp:integer referencia:string

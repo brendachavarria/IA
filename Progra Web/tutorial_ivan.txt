@@ -1,0 +1,35 @@
+Aquí ando pero no puedo abrir
+Si hablo duermo en la calle xd
+JUAN IVAN VELAZQUEZ CABELLO23:24
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Servicios Extraescolares</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'a
+JUAN IVAN VELAZQUEZ CABELLO23:27
+home_controller.rb
+class HomeController < ApplicationController
+  def index
+    @nombre = current_user.profile.nombre.blank? ? current_user.email : current_user.profile.nombre
+  end
+end
+JUAN IVAN VELAZQUEZ CABELLO23:28
+<h1 class="margin">Bienvenido al sistema <strong><%= @nombre %></strong> </h1>
+<%= image_tag("tec.jpg", { size: "200x200", alt: "Tec school", class: "img-responsive"}) %>
+JUAN IVAN VELAZQUEZ CABELLO23:44
+root to: 'home#index'
+JUAN IVAN VELAZQUEZ CABELLO23:52
+#logoutModal
+Tú00:12
+https://meet.google.com/ppy-swqv-xna
