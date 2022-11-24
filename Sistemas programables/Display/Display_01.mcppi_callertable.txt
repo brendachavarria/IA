@@ -1,0 +1,2 @@
+main
+	Binario_a_7Segmentos

@@ -1,0 +1,9 @@
+0	1	mikroCPIC1618.exe -MSF -DBG -pP16F84A -DL -O11111114 -fo4 -N"T:\SISTEMAS PROGRAMABLES\MikroC\Display\Display_05_V2.mcppi" -SP"C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for PIC\defs\" -SP"C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for PIC\Uses\P16\" -SP"T:\SISTEMAS PROGRAMABLES\MikroC\Display\" -SP"T:\SISTEMAS PROGRAMABLES\MikroC\" -IP"T:\SISTEMAS PROGRAMABLES\MikroC\" "Display_05_V2.c" "__Lib_Math.mcl" "__Lib_MathDouble.mcl" "__Lib_System.mcl" "__Lib_Delays.mcl" "__Lib_CType.mcl" "__Lib_CString.mcl" "__Lib_CStdlib.mcl" "__Lib_CMath.mcl" "__Lib_MemManager.mcl" "__Lib_Conversions.mcl" "__Lib_Sprinti.mcl" "__Lib_Sprintl.mcl" "__Lib_Time.mcl" "__Lib_Trigonometry.mcl" "__Lib_Button.mcl" "__Lib_Keypad4x4.mcl" "__Lib_Manchester.mcl" "__Lib_OneWire.mcl" "__Lib_PS2.mcl" "__Lib_Sound.mcl" "__Lib_SoftI2C.mcl" "__Lib_SoftSPI.mcl" "__Lib_SoftUART.mcl" "__Lib_EEPROM.mcl" "__Lib_LcdConsts.mcl" "__Lib_Lcd.mcl" "__Lib_S1D13700.mcl"	 
+diagnostics: 0	126	All files Preprocessed in 140 ms	 
+diagnostics: 0	122	Compilation Started	display_7s.h
+diagnostics: 17	123	Compiled Successfully	Display_05_V2.c
+diagnostics: 0	127	All files Compiled in 125 ms	 
+diagnostics: 0	125	Project Linked Successfully	Display_05_V2.mcppi
+diagnostics: 0	128	Linked in 94 ms	 
+diagnostics: 0	129	Project 'Display_05_V2.mcppi' completed: 515 ms	 
+diagnostics: 0	103	Finished successfully: 21 abr. 2021, 10:22:40	Display_05_V2.mcppi
