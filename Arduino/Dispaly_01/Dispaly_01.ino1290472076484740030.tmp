@@ -1,0 +1,67 @@
+int led;
+
+void configuracion(int vec[6]) {
+  for (led=0;led<6;led++)
+    digitalWrite(led+2, vec[led]);
+}
+
+void setup() {
+  for(led=2;led<=9;led++)
+    pinMode(led,OUTPUT);
+  for(led=1;led<=4;led++)
+    pinMode(21+led,INPUT)
+}
+
+void loop() {
+  int a[16][8]={{1,1,1,1,1,1,0,0}, //3f
+            {0,1,1,0,0,0,0,0},     //06
+            {1,1,0,1,1,0,1,0},    //5b
+            {1,1,1,1,0,0,1,0},    //4f
+            {0,1,1,0,0,1,1,0},    //66
+            {1,0,1,1,0,1,1,0},    //6d
+            {1,0,1,1,1,1,1,0},    //7d
+            {1,1,1,0,0,0,0,0},    //07
+            {1,1,1,1,1,1,1,0},    //7f
+            {1,1,1,0,0,1,1,0},    //67
+            {1,1,1,0,1,1,1,0},    //77
+            {0,0,1,1,1,1,1,0},    //7c
+            {1,0,0,1,1,1,0,0},    //39
+            {0,1,1,1,1,0,1,0},    //5e
+            {1,0,0,1,1,1,1,0},    //79
+            {1,0,0,0,1,1,1,0}};   //71
+  int x,acum=0,p;
+  for(x=0;x<3;x++) {
+    if (x==0)
+      p=1;
+    else
+      p*=2;
+    if (digitalRead(22+x)==1) {
+      acum+=p;
+    }
+  }
+  switch(acum) {
+    case 0:
+      configuracion(a);
+      break;
+    case 1:
+      configuracion(b);
+      break;
+    case 2:
+      configuracion(c);
+      break;
+    case 3:
+      configuracion(d);
+      break;
+    case 4:
+      configuracion(e);
+      break;
+    case 5:
+      configuracion(f);
+      break;
+    case 6:
+      configuracion(g);
+      break;
+    case 7:
+      configuracion(h);
+  }
+}
