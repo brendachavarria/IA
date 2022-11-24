@@ -1,0 +1,7 @@
+Der
+R0 = SDer
+SaltaIgual R0 0 1
+Izq
+R1 = SIzq
+SaltaIgual R1 0 4
+SaltaIgual R1 1 1

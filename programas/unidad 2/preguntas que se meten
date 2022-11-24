@@ -1,0 +1,27 @@
+¿Tu animalito tiene bigotes?
+¿Tu animalito camina en dos patas?
+¿Tu animalito tiene caparazon?
+¿Tu animalito es carnivoro?
+¿Tu animalito tiene cola anillada?
+¿Tu animalito tiene escamas?
+¿Tu animalito tiene garras?
+¿Tu animalito es hervivoro?
+¿Tu animalito ladra?
+¿Tu animalito toma leche?
+¿Tu animalito nada?
+¿Tu animalito es omnivoro?
+¿Tu animalito tiene pelo?
+¿Tu animalito repta?
+¿Tu animalito ronronea?
+#axolote,cocodrilo,delfin,gato,lobo,mapache,panda,perro,tigre,tortuga,zorro
+"0 0 0 1 0 0 0 0 0 0 1 0 0 0 0": ["axolote"]
+"0 1 0 1 0 1 1 0 0 0 1 0 0 1 0": ["cocodrilo"]
+"0 0 0 1 0 0 0 0 0 1 1 0 0 0 0": ["delfin"]
+"1 0 0 1 0 0 1 0 0 1 1 0 1 0 1": ["gato"]
+"1 0 0 1 0 0 1 0 1 1 1 0 1 0 0": ["lobo"]
+"1 1 0 0 1 0 1 0 0 1 1 1 1 0 0": ["mapache"]
+"0 1 0 0 0 0 1 1 0 1 1 0 1 0 0 ": ["panda"]
+"1 0 0 1 0 0 1 0 1 1 1 0 1 0 0": ["perro"]
+"1 0 0 1 0 0 1 0 0 1 1 0 1 0 1": ["tigre"]
+"0 0 1 0 0 0 0 1 0 0 1 0 0 1 0": ["tortuga"]
+"1 0 0 1 0 0 1 0 1 1 1 0 1 0 0": ["zorro"]}

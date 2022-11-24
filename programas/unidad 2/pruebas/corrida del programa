@@ -1,0 +1,620 @@
+El archivo Json existe
+['bigotes', 'caminar en dos patas', 'caparazon', 'carnivoro', 'cola anillada', 'escamas', 'garras', 'hervivoro', 'ladra', 'leche', 'nada', 'omnivoro', 'pelo', 'reptan', 'ronronean']
+Para la caracteristica " bigotes "
+Escribe la pregunta adecuada
+¿Tu animalito tiene bigotes?
+Para la caracteristica " caminar en dos patas "
+Escribe la pregunta adecuada
+¿Tu animalito camina en dos patas?
+Para la caracteristica " caparazon "
+Escribe la pregunta adecuada
+¿Tu animalito tiene caparazon?
+Para la caracteristica " carnivoro "
+Escribe la pregunta adecuada
+¿Tu animalito es carnivoro?
+Para la caracteristica " cola anillada "
+Escribe la pregunta adecuada
+¿Tu animalito tiene cola anillada?
+Para la caracteristica " escamas "
+Escribe la pregunta adecuada
+¿Tu animalito tiene escamas?
+Para la caracteristica " garras "
+Escribe la pregunta adecuada
+¿Tu animalito tiene garras?
+Para la caracteristica " hervivoro "
+Escribe la pregunta adecuada
+¿Tu animalito es hervivoro?
+Para la caracteristica " ladra "
+Escribe la pregunta adecuada
+¿Tu animalito ladra?
+Para la caracteristica " leche "
+Escribe la pregunta adecuada
+¿Tu animalito toma leche?
+Para la caracteristica " nada "
+Escribe la pregunta adecuada
+¿Tu animalito nada?
+Para la caracteristica " omnivoro "
+Escribe la pregunta adecuada
+¿Tu animalito es omnivoro?
+Para la caracteristica " pelo "
+Escribe la pregunta adecuada
+¿Tu animalito tiene pelo?
+Para la caracteristica " reptan "
+Escribe la pregunta adecuada
+¿Tu animalito repta?
+Para la caracteristica " ronronean "
+Escribe la pregunta adecuada
+¿Tu animalito ronronea?
+{'bigotes': '¿Tu animalito tiene bigotes?', 'caminar en dos patas': '¿Tu animalito camina en dos patas?', 'caparazon': '¿Tu animalito tiene caparazon?', 'carnivoro': '¿Tu animalito es carnivoro?', 'cola anillada': '¿Tu animalito tiene cola anillada?', 'escamas': '¿Tu animalito tiene escamas?', 'garras': '¿Tu animalito tiene garras?', 'hervivoro': '¿Tu animalito es hervivoro?', 'ladra': '¿Tu animalito ladra?', 'leche': '¿Tu animalito toma leche?', 'nada': '¿Tu animalito nada?', 'omnivoro': '¿Tu animalito es omnivoro?', 'pelo': '¿Tu animalito tiene pelo?', 'reptan': '¿Tu animalito repta?', 'ronronean': '¿Tu animalito ronronea?'}
+¡¡Hecho!!
+['axolote', 'cocodrilo', 'delfin', 'gato', 'lobo', 'mapache', 'panda', 'perro', 'tigre', 'tortuga', 'zorro']
+Describe la caracteristicas de  axolote
+¿Tu animalito tiene bigotes?
+1) Si 2) No
+2
+¿Tu animalito camina en dos patas?
+1) Si 2) No
+2
+¿Tu animalito tiene caparazon?
+1) Si 2) No
+2
+¿Tu animalito es carnivoro?
+1) Si 2) No
+1
+¿Tu animalito tiene cola anillada?
+1) Si 2) No
+2
+¿Tu animalito tiene escamas?
+1) Si 2) No
+2
+¿Tu animalito tiene garras?
+1) Si 2) No
+2
+¿Tu animalito es hervivoro?
+1) Si 2) No
+2
+¿Tu animalito ladra?
+1) Si 2) No
+2
+¿Tu animalito toma leche?
+1) Si 2) No
+2
+¿Tu animalito nada?
+1) Si 2) No
+1
+¿Tu animalito es omnivoro?
+1) Si 2) No
+2
+¿Tu animalito tiene pelo?
+1) Si 2) No
+2
+¿Tu animalito repta?
+1) Si 2) No
+2
+¿Tu animalito ronronea?
+1) Si 2) No
+2
+Describe la caracteristicas de  cocodrilo
+¿Tu animalito tiene bigotes?
+1) Si 2) No
+2
+¿Tu animalito camina en dos patas?
+1) Si 2) No
+1
+¿Tu animalito tiene caparazon?
+1) Si 2) No
+2
+¿Tu animalito es carnivoro?
+1) Si 2) No
+1
+¿Tu animalito tiene cola anillada?
+1) Si 2) No
+2
+¿Tu animalito tiene escamas?
+1) Si 2) No
+1
+¿Tu animalito tiene garras?
+1) Si 2) No
+1
+¿Tu animalito es hervivoro?
+1) Si 2) No
+2
+¿Tu animalito ladra?
+1) Si 2) No
+2
+¿Tu animalito toma leche?
+1) Si 2) No
+2
+¿Tu animalito nada?
+1) Si 2) No
+1
+¿Tu animalito es omnivoro?
+1) Si 2) No
+2
+¿Tu animalito tiene pelo?
+1) Si 2) No
+2
+¿Tu animalito repta?
+1) Si 2) No
+1
+¿Tu animalito ronronea?
+1) Si 2) No
+2
+Describe la caracteristicas de  delfin
+¿Tu animalito tiene bigotes?
+1) Si 2) No
+2
+¿Tu animalito camina en dos patas?
+1) Si 2) No
+2
+¿Tu animalito tiene caparazon?
+1) Si 2) No
+2
+¿Tu animalito es carnivoro?
+1) Si 2) No
+1
+¿Tu animalito tiene cola anillada?
+1) Si 2) No
+2
+¿Tu animalito tiene escamas?
+1) Si 2) No
+2
+¿Tu animalito tiene garras?
+1) Si 2) No
+2
+¿Tu animalito es hervivoro?
+1) Si 2) No
+2
+¿Tu animalito ladra?
+1) Si 2) No
+2
+¿Tu animalito toma leche?
+1) Si 2) No
+1
+¿Tu animalito nada?
+1) Si 2) No
+1
+¿Tu animalito es omnivoro?
+1) Si 2) No
+2
+¿Tu animalito tiene pelo?
+1) Si 2) No
+2
+¿Tu animalito repta?
+1) Si 2) No
+2
+¿Tu animalito ronronea?
+1) Si 2) No
+2
+Describe la caracteristicas de  gato
+¿Tu animalito tiene bigotes?
+1) Si 2) No
+1
+¿Tu animalito camina en dos patas?
+1) Si 2) No
+2
+¿Tu animalito tiene caparazon?
+1) Si 2) No
+2
+¿Tu animalito es carnivoro?
+1) Si 2) No
+1
+¿Tu animalito tiene cola anillada?
+1) Si 2) No
+2
+¿Tu animalito tiene escamas?
+1) Si 2) No
+2
+¿Tu animalito tiene garras?
+1) Si 2) No
+1
+¿Tu animalito es hervivoro?
+1) Si 2) No
+2
+¿Tu animalito ladra?
+1) Si 2) No
+2
+¿Tu animalito toma leche?
+1) Si 2) No
+1
+¿Tu animalito nada?
+1) Si 2) No
+1
+¿Tu animalito es omnivoro?
+1) Si 2) No
+2
+¿Tu animalito tiene pelo?
+1) Si 2) No
+1
+¿Tu animalito repta?
+1) Si 2) No
+2
+¿Tu animalito ronronea?
+1) Si 2) No
+1
+Describe la caracteristicas de  lobo
+¿Tu animalito tiene bigotes?
+1) Si 2) No
+1
+¿Tu animalito camina en dos patas?
+1) Si 2) No
+2
+¿Tu animalito tiene caparazon?
+1) Si 2) No
+2
+¿Tu animalito es carnivoro?
+1) Si 2) No
+1
+¿Tu animalito tiene cola anillada?
+1) Si 2) No
+2
+¿Tu animalito tiene escamas?
+1) Si 2) No
+2
+¿Tu animalito tiene garras?
+1) Si 2) No
+1
+¿Tu animalito es hervivoro?
+1) Si 2) No
+2
+¿Tu animalito ladra?
+1) Si 2) No
+1
+¿Tu animalito toma leche?
+1) Si 2) No
+1
+¿Tu animalito nada?
+1) Si 2) No
+1
+¿Tu animalito es omnivoro?
+1) Si 2) No
+2
+¿Tu animalito tiene pelo?
+1) Si 2) No
+1
+¿Tu animalito repta?
+1) Si 2) No
+2
+¿Tu animalito ronronea?
+1) Si 2) No
+2
+Describe la caracteristicas de  mapache
+¿Tu animalito tiene bigotes?
+1) Si 2) No
+1
+¿Tu animalito camina en dos patas?
+1) Si 2) No
+1
+¿Tu animalito tiene caparazon?
+1) Si 2) No
+2
+¿Tu animalito es carnivoro?
+1) Si 2) No
+2
+¿Tu animalito tiene cola anillada?
+1) Si 2) No
+1
+¿Tu animalito tiene escamas?
+1) Si 2) No
+2
+¿Tu animalito tiene garras?
+1) Si 2) No
+1
+¿Tu animalito es hervivoro?
+1) Si 2) No
+2
+¿Tu animalito ladra?
+1) Si 2) No
+2
+¿Tu animalito toma leche?
+1) Si 2) No
+1
+¿Tu animalito nada?
+1) Si 2) No
+1
+¿Tu animalito es omnivoro?
+1) Si 2) No
+1
+¿Tu animalito tiene pelo?
+1) Si 2) No
+1
+¿Tu animalito repta?
+1) Si 2) No
+2
+¿Tu animalito ronronea?
+1) Si 2) No
+2
+Describe la caracteristicas de  panda
+¿Tu animalito tiene bigotes?
+1) Si 2) No
+2
+¿Tu animalito camina en dos patas?
+1) Si 2) No
+1
+¿Tu animalito tiene caparazon?
+1) Si 2) No
+2
+¿Tu animalito es carnivoro?
+1) Si 2) No
+2
+¿Tu animalito tiene cola anillada?
+1) Si 2) No
+2
+¿Tu animalito tiene escamas?
+1) Si 2) No
+2
+¿Tu animalito tiene garras?
+1) Si 2) No
+1
+¿Tu animalito es hervivoro?
+1) Si 2) No
+1
+¿Tu animalito ladra?
+1) Si 2) No
+2
+¿Tu animalito toma leche?
+1) Si 2) No
+1
+¿Tu animalito nada?
+1) Si 2) No
+1
+¿Tu animalito es omnivoro?
+1) Si 2) No
+2
+¿Tu animalito tiene pelo?
+1) Si 2) No
+1
+¿Tu animalito repta?
+1) Si 2) No
+2
+¿Tu animalito ronronea?
+1) Si 2) No
+2
+Describe la caracteristicas de  perro
+¿Tu animalito tiene bigotes?
+1) Si 2) No
+1
+¿Tu animalito camina en dos patas?
+1) Si 2) No
+2
+¿Tu animalito tiene caparazon?
+1) Si 2) No
+2
+¿Tu animalito es carnivoro?
+1) Si 2) No
+1
+¿Tu animalito tiene cola anillada?
+1) Si 2) No
+2
+¿Tu animalito tiene escamas?
+1) Si 2) No
+2
+¿Tu animalito tiene garras?
+1) Si 2) No
+1
+¿Tu animalito es hervivoro?
+1) Si 2) No
+2
+¿Tu animalito ladra?
+1) Si 2) No
+1
+¿Tu animalito toma leche?
+1) Si 2) No
+1
+¿Tu animalito nada?
+1) Si 2) No
+1
+¿Tu animalito es omnivoro?
+1) Si 2) No
+2
+¿Tu animalito tiene pelo?
+1) Si 2) No
+1
+¿Tu animalito repta?
+1) Si 2) No
+2
+¿Tu animalito ronronea?
+1) Si 2) No
+2
+Describe la caracteristicas de  tigre
+¿Tu animalito tiene bigotes?
+1) Si 2) No
+1
+¿Tu animalito camina en dos patas?
+1) Si 2) No
+2
+¿Tu animalito tiene caparazon?
+1) Si 2) No
+2
+¿Tu animalito es carnivoro?
+1) Si 2) No
+1
+¿Tu animalito tiene cola anillada?
+1) Si 2) No
+2
+¿Tu animalito tiene escamas?
+1) Si 2) No
+2
+¿Tu animalito tiene garras?
+1) Si 2) No
+1
+¿Tu animalito es hervivoro?
+1) Si 2) No
+2
+¿Tu animalito ladra?
+1) Si 2) No
+2
+¿Tu animalito toma leche?
+1) Si 2) No
+1
+¿Tu animalito nada?
+1) Si 2) No
+1
+¿Tu animalito es omnivoro?
+1) Si 2) No
+2
+¿Tu animalito tiene pelo?
+1) Si 2) No
+1
+¿Tu animalito repta?
+1) Si 2) No
+2
+¿Tu animalito ronronea?
+1) Si 2) No
+1
+Describe la caracteristicas de  tortuga
+¿Tu animalito tiene bigotes?
+1) Si 2) No
+2
+¿Tu animalito camina en dos patas?
+1) Si 2) No
+2
+¿Tu animalito tiene caparazon?
+1) Si 2) No
+1
+¿Tu animalito es carnivoro?
+1) Si 2) No
+2
+¿Tu animalito tiene cola anillada?
+1) Si 2) No
+2
+¿Tu animalito tiene escamas?
+1) Si 2) No
+2
+¿Tu animalito tiene garras?
+1) Si 2) No
+2
+¿Tu animalito es hervivoro?
+1) Si 2) No
+1
+¿Tu animalito ladra?
+1) Si 2) No
+2
+¿Tu animalito toma leche?
+1) Si 2) No
+2
+¿Tu animalito nada?
+1) Si 2) No
+1
+¿Tu animalito es omnivoro?
+1) Si 2) No
+2
+¿Tu animalito tiene pelo?
+1) Si 2) No
+2
+¿Tu animalito repta?
+1) Si 2) No
+1
+¿Tu animalito ronronea?
+1) Si 2) No
+2
+Describe la caracteristicas de  zorro
+¿Tu animalito tiene bigotes?
+1) Si 2) No
+1
+¿Tu animalito camina en dos patas?
+1) Si 2) No
+2
+¿Tu animalito tiene caparazon?
+1) Si 2) No
+2
+¿Tu animalito es carnivoro?
+1) Si 2) No
+1
+¿Tu animalito tiene cola anillada?
+1) Si 2) No
+2
+¿Tu animalito tiene escamas?
+1) Si 2) No
+2
+¿Tu animalito tiene garras?
+1) Si 2) No
+1
+¿Tu animalito es hervivoro?
+1) Si 2) No
+2
+¿Tu animalito ladra?
+1) Si 2) No
+1
+¿Tu animalito toma leche?
+1) Si 2) No
+1
+¿Tu animalito nada?
+1) Si 2) No
+1
+¿Tu animalito es omnivoro?
+1) Si 2) No
+2
+¿Tu animalito tiene pelo?
+1) Si 2) No
+1
+¿Tu animalito repta?
+1) Si 2) No
+2
+¿Tu animalito ronronea?
+1) Si 2) No
+2
+¡¡Se hicieron las clases!!
+
+
+
+\(-_-)/ Bienvenido al Juegito de Adivina tu animalito \(-_-)/
+Piensa en uno de estos animales:
+ ['axolote', 'cocodrilo', 'delfin', 'gato', 'lobo', 'mapache', 'panda', 'perro', 'tigre', 'tortuga', 'zorro']
+ Ahora contesta estas preguntas
+['000100000010000', '010101100010010', '000100000110000', '100100100110101', '100100101110100', '110010100111100', '010000110110100', '001000010010010']
+[['axolote'], ['cocodrilo'], ['delfin'], ['gato', 'tigre'], ['lobo', 'perro', 'zorro'], ['mapache'], ['panda'], ['tortuga']]
+Describe la caracteristicas de tu animalito elegido
+¿Tu animalito tiene bigotes?
+1) Si 2) No
+1
+¿Tu animalito camina en dos patas?
+1) Si 2) No
+2
+¿Tu animalito tiene caparazon?
+1) Si 2) No
+2
+¿Tu animalito es carnivoro?
+1) Si 2) No
+1
+¿Tu animalito tiene cola anillada?
+1) Si 2) No
+2
+¿Tu animalito tiene escamas?
+1) Si 2) No
+2
+¿Tu animalito tiene garras?
+1) Si 2) No
+1
+¿Tu animalito es hervivoro?
+1) Si 2) No
+2
+¿Tu animalito ladra?
+1) Si 2) No
+1
+¿Tu animalito toma leche?
+1) Si 2) No
+1
+¿Tu animalito nada?
+1) Si 2) No
+1
+¿Tu animalito es omnivoro?
+1) Si 2) No
+2
+¿Tu animalito tiene pelo?
+1) Si 2) No
+1
+¿Tu animalito repta?
+1) Si 2) No
+2
+¿Tu animalito ronronea?
+1) Si 2) No
+2
+['lobo', 'perro', 'zorro']
+['lobo', 'perro', 'zorro']
+['lobo', 'perro', 'zorro']
+['lobo', 'perro', 'zorro']
+****** TU ANIMALITO ES...     ['lobo', 'perro', 'zorro']     *******
+
+Process returned 0 (0x0)        execution time : 862.802 s
+Presione una tecla para continuar . . .
