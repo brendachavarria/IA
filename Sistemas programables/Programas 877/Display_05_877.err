@@ -1,0 +1,2 @@
+Warning[207] C:\PROTEUS\PROGRAMAS 877\DISPLAY_05_877.ASM 8 : Found label after column 1. (Caracter)
+Message[302] C:\PROTEUS\PROGRAMAS 877\DISPLAY_05_877.ASM 14 : Register in operand not in bank 0.  Ensure that bank bits are correct.
