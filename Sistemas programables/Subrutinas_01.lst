@@ -1,0 +1,222 @@
+MPASM  5.51                 SUBRUTINAS_01.ASM   9-20-2021  11:45:45         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+2007   3FF1           00001         __CONFIG _CP_OFF&_WDT_OFF&_PWRTE_ON&_XT_OSC
+                      00002         
+                      00003         LIST    P=16F84A
+                      00004         INCLUDE <P16F84A.INC>
+                      00001         LIST
+                      00002 
+                      00003 ;==========================================================================
+                      00004 ;  MPASM PIC16F84A processor include
+                      00005 ; 
+                      00006 ;  (c) Copyright 1999-2013 Microchip Technology, All rights reserved
+                      00007 ;==========================================================================
+                      00008 
+                      00208         LIST
+                      00005 
+                      00006         CBLOCK 0x0C
+                      00007         ENDC
+                      00008 
+  000000AF            00009 Numero  EQU     .175
+                      00010 
+0000                  00011         ORG 0
+                      00012                 
+0000                  00013 Inicio  
+0000   1683           00014         bsf STATUS,RP0
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0001   0186           00015         clrf TRISB
+0002   1283           00016         bcf     STATUS,RP0
+                      00017         
+0003                  00018 Principal
+0003   30AF           00019         movlw   Numero
+0004   2007           00020         call    BIN_a_BCD
+0005   0086           00021         movwf   PORTB
+0006   2806           00022         goto    $
+                      00023 
+                      00024         CBLOCK
+  0000000C            00025         Centenas
+  0000000D            00026         Decenas
+  0000000E            00027         Unidades
+                      00028         ENDC
+                      00029         
+0007                  00030 BIN_a_BCD
+0007   018C           00031         clrf    Centenas
+0008   018D           00032         clrf    Decenas
+0009   008E           00033         movwf   Unidades
+000A                  00034 Resta10
+000A   300A           00035         movlw   .10
+000B   020E           00036         subwf   Unidades,W
+000C   1C03           00037         btfss   STATUS,C
+000D   2817           00038         goto    Fin_BIN_BCD
+000E                  00039 IncrementaDecenas
+000E   008E           00040         movwf   Unidades
+000F   0A8D           00041         incf    Decenas,F
+0010   300A           00042         movlw   .10
+0011   020D           00043         subwf   Decenas,W
+MPASM  5.51                 SUBRUTINAS_01.ASM   9-20-2021  11:45:45         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0012   1C03           00044         btfss   STATUS,C
+0013   280A           00045         goto    Resta10
+0014                  00046 IncrementaCentenas
+0014   018D           00047         clrf    Decenas
+0015   0A8C           00048         incf    Centenas,F
+0016   280A           00049         goto    Resta10
+0017                  00050 Fin_BIN_BCD
+0017   0E0D           00051         swapf   Decenas,W
+0018   070E           00052         addwf   Unidades,W
+0019   0008           00053         return
+                      00054                 
+                      00055                 END
+MPASM  5.51                 SUBRUTINAS_01.ASM   9-20-2021  11:45:45         PAGE  3
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+BIN_a_BCD                         00000007
+C                                 00000000
+Centenas                          0000000C
+DC                                00000001
+Decenas                           0000000D
+EEADR                             00000009
+EECON1                            00000088
+EECON2                            00000089
+EEDATA                            00000008
+EEIE                              00000006
+EEIF                              00000004
+F                                 00000001
+FSR                               00000004
+Fin_BIN_BCD                       00000017
+GIE                               00000007
+INDF                              00000000
+INTCON                            0000000B
+INTE                              00000004
+INTEDG                            00000006
+INTF                              00000001
+IRP                               00000007
+IncrementaCentenas                00000014
+IncrementaDecenas                 0000000E
+Inicio                            00000000
+NOT_PD                            00000003
+NOT_RBPU                          00000007
+NOT_TO                            00000004
+Numero                            000000AF
+OPTION_REG                        00000081
+PCL                               00000002
+PCLATH                            0000000A
+PORTA                             00000005
+PORTB                             00000006
+PS0                               00000000
+PS1                               00000001
+PS2                               00000002
+PSA                               00000003
+Principal                         00000003
+RA0                               00000000
+RA1                               00000001
+RA2                               00000002
+RA3                               00000003
+RA4                               00000004
+RB0                               00000000
+RB1                               00000001
+RB2                               00000002
+RB3                               00000003
+RB4                               00000004
+RB5                               00000005
+RB6                               00000006
+RB7                               00000007
+RBIE                              00000003
+RBIF                              00000000
+MPASM  5.51                 SUBRUTINAS_01.ASM   9-20-2021  11:45:45         PAGE  4
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+RD                                00000000
+RP0                               00000005
+RP1                               00000006
+Resta10                           0000000A
+STATUS                            00000003
+T0CS                              00000005
+T0IE                              00000005
+T0IF                              00000002
+T0SE                              00000004
+TMR0                              00000001
+TMR0IE                            00000005
+TMR0IF                            00000002
+TRISA                             00000085
+TRISA0                            00000000
+TRISA1                            00000001
+TRISA2                            00000002
+TRISA3                            00000003
+TRISA4                            00000004
+TRISB                             00000086
+TRISB0                            00000000
+TRISB1                            00000001
+TRISB2                            00000002
+TRISB3                            00000003
+TRISB4                            00000004
+TRISB5                            00000005
+TRISB6                            00000006
+TRISB7                            00000007
+Unidades                          0000000E
+W                                 00000000
+WR                                00000001
+WREN                              00000002
+WRERR                             00000003
+Z                                 00000002
+_CONFIG                           00002007
+_CP_OFF                           00003FFF
+_CP_ON                            0000000F
+_DEVID1                           00002006
+_FOSC_EXTRC                       00003FFF
+_FOSC_HS                          00003FFE
+_FOSC_LP                          00003FFC
+_FOSC_XT                          00003FFD
+_HS_OSC                           00003FFE
+_IDLOC0                           00002000
+_IDLOC1                           00002001
+_IDLOC2                           00002002
+_IDLOC3                           00002003
+_LP_OSC                           00003FFC
+_PWRTE_OFF                        00003FFF
+_PWRTE_ON                         00003FF7
+_RC_OSC                           00003FFF
+_WDTE_OFF                         00003FFB
+_WDTE_ON                          00003FFF
+_WDT_OFF                          00003FFB
+MPASM  5.51                 SUBRUTINAS_01.ASM   9-20-2021  11:45:45         PAGE  5
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_WDT_ON                           00003FFF
+_XT_OSC                           00003FFD
+__16F84A                          00000001
+
+
+MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
+
+0000 : XXXXXXXXXXXXXXXX XXXXXXXXXX------ ---------------- ----------------
+2000 : -------X-------- ---------------- ---------------- ----------------
+
+All other memory blocks unused.
+
+Program Memory Words Used:    26
+Program Memory Words Free:   998
+
+
+Errors   :     0
+Warnings :     0 reported,     0 suppressed
+Messages :     1 reported,     0 suppressed
+
+

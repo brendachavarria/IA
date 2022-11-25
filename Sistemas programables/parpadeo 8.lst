@@ -1,0 +1,226 @@
+MPASM  5.51                    PARPADEO 8.ASM   9-15-2021  12:21:51         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+2007   3FF1           00001         __CONFIG _CP_OFF&_WDT_OFF&_PWRTE_ON&_XT_OSC
+                      00002         
+                      00003         LIST    P=16F84A
+                      00004         INCLUDE <P16F84A.INC>
+                      00001         LIST
+                      00002 
+                      00003 ;==========================================================================
+                      00004 ;  MPASM PIC16F84A processor include
+                      00005 ; 
+                      00006 ;  (c) Copyright 1999-2013 Microchip Technology, All rights reserved
+                      00007 ;==========================================================================
+                      00008 
+                      00208         LIST
+                      00005 
+  00000001            00006 Constante EQU   b'00000001'
+  0000000C            00007 PDel0   EQU 0C
+  0000000D            00008 Pdel1   EQU 0D  
+                      00009 
+0000                  00010         ORG 0
+                      00011                 
+0000                  00012 Inicio  
+0000   1683           00013         bsf             STATUS,RP0
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0001   0186           00014         clrf    TRISB
+0002   1283           00015         bcf             STATUS,RP0
+0003   3001           00016         movlw   Constante
+                      00017 
+0004                  00018 Loop
+0004   0086           00019         movwf   PORTB
+0005   200F           00020         call    pausa
+0006   1003           00021         bcf             STATUS,C
+0007   0D86           00022         rlf             PORTB,F
+0008   0886           00023         movf    PORTB,F
+0009   1D03           00024         btfss   STATUS,Z
+000A   280D           00025         goto    NoCero
+000B                  00026 SiCero  
+000B   3001           00027         movlw   Constante
+000C   2804           00028         goto    Loop
+000D                  00029 NoCero
+000D   0806           00030         movf    PORTB,W
+000E   2804           00031         goto    Loop
+                      00032 
+000F                  00033 pausa
+000F   3098           00034         movlw   .152
+0010   008C           00035         movwf   PDel0
+0011                  00036 PLoop1  
+0011   3096           00037         movlw   .150
+0012   008D           00038         movwf   Pdel1
+0013   0064           00039 PLoop2  clrwdt
+0014   2815           00040 PDelL1 goto PDelL2
+0015   2816           00041 PDelL2 goto     PDelL3
+0016   0064           00042 PDelL3 clrwdt
+0017   0B8D           00043         decfsz  Pdel1,1
+MPASM  5.51                    PARPADEO 8.ASM   9-15-2021  12:21:51         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0018   2813           00044         goto PLoop2
+0019   0B8C           00045         decfsz  PDel0,1
+001A   2811           00046         goto PLoop1
+001B   281C           00047 PDelL4 goto PDelL5
+001C   281D           00048 PDelL5 goto PDelL6
+001D   281E           00049 PDelL6 goto PDelL7
+001E   0064           00050 PDelL7 clrwdt
+001F   0008           00051         return
+                      00052                 
+                      00053                 END
+MPASM  5.51                    PARPADEO 8.ASM   9-15-2021  12:21:51         PAGE  3
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+C                                 00000000
+Constante                         00000001
+DC                                00000001
+EEADR                             00000009
+EECON1                            00000088
+EECON2                            00000089
+EEDATA                            00000008
+EEIE                              00000006
+EEIF                              00000004
+F                                 00000001
+FSR                               00000004
+GIE                               00000007
+INDF                              00000000
+INTCON                            0000000B
+INTE                              00000004
+INTEDG                            00000006
+INTF                              00000001
+IRP                               00000007
+Inicio                            00000000
+Loop                              00000004
+NOT_PD                            00000003
+NOT_RBPU                          00000007
+NOT_TO                            00000004
+NoCero                            0000000D
+OPTION_REG                        00000081
+PCL                               00000002
+PCLATH                            0000000A
+PDel0                             0000000C
+PDelL1                            00000014
+PDelL2                            00000015
+PDelL3                            00000016
+PDelL4                            0000001B
+PDelL5                            0000001C
+PDelL6                            0000001D
+PDelL7                            0000001E
+PLoop1                            00000011
+PLoop2                            00000013
+PORTA                             00000005
+PORTB                             00000006
+PS0                               00000000
+PS1                               00000001
+PS2                               00000002
+PSA                               00000003
+Pdel1                             0000000D
+RA0                               00000000
+RA1                               00000001
+RA2                               00000002
+RA3                               00000003
+RA4                               00000004
+RB0                               00000000
+RB1                               00000001
+RB2                               00000002
+RB3                               00000003
+MPASM  5.51                    PARPADEO 8.ASM   9-15-2021  12:21:51         PAGE  4
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+RB4                               00000004
+RB5                               00000005
+RB6                               00000006
+RB7                               00000007
+RBIE                              00000003
+RBIF                              00000000
+RD                                00000000
+RP0                               00000005
+RP1                               00000006
+STATUS                            00000003
+SiCero                            0000000B
+T0CS                              00000005
+T0IE                              00000005
+T0IF                              00000002
+T0SE                              00000004
+TMR0                              00000001
+TMR0IE                            00000005
+TMR0IF                            00000002
+TRISA                             00000085
+TRISA0                            00000000
+TRISA1                            00000001
+TRISA2                            00000002
+TRISA3                            00000003
+TRISA4                            00000004
+TRISB                             00000086
+TRISB0                            00000000
+TRISB1                            00000001
+TRISB2                            00000002
+TRISB3                            00000003
+TRISB4                            00000004
+TRISB5                            00000005
+TRISB6                            00000006
+TRISB7                            00000007
+W                                 00000000
+WR                                00000001
+WREN                              00000002
+WRERR                             00000003
+Z                                 00000002
+_CONFIG                           00002007
+_CP_OFF                           00003FFF
+_CP_ON                            0000000F
+_DEVID1                           00002006
+_FOSC_EXTRC                       00003FFF
+_FOSC_HS                          00003FFE
+_FOSC_LP                          00003FFC
+_FOSC_XT                          00003FFD
+_HS_OSC                           00003FFE
+_IDLOC0                           00002000
+_IDLOC1                           00002001
+_IDLOC2                           00002002
+_IDLOC3                           00002003
+_LP_OSC                           00003FFC
+_PWRTE_OFF                        00003FFF
+MPASM  5.51                    PARPADEO 8.ASM   9-15-2021  12:21:51         PAGE  5
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_PWRTE_ON                         00003FF7
+_RC_OSC                           00003FFF
+_WDTE_OFF                         00003FFB
+_WDTE_ON                          00003FFF
+_WDT_OFF                          00003FFB
+_WDT_ON                           00003FFF
+_XT_OSC                           00003FFD
+__16F84A                          00000001
+pausa                             0000000F
+
+
+MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
+
+0000 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX ---------------- ----------------
+2000 : -------X-------- ---------------- ---------------- ----------------
+
+All other memory blocks unused.
+
+Program Memory Words Used:    32
+Program Memory Words Free:   992
+
+
+Errors   :     0
+Warnings :     0 reported,     0 suppressed
+Messages :     1 reported,     0 suppressed
+
+

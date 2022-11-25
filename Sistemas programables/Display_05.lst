@@ -1,0 +1,245 @@
+MPASM  5.51                    DISPLAY_05.ASM   9-22-2021  11:33:37         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+2007   3FF1           00001         __CONFIG _CP_OFF&_WDT_OFF&_PWRTE_ON&_XT_OSC
+                      00002         
+                      00003         LIST    P=16F84A
+                      00004         INCLUDE <P16F84A.INC>
+                      00001         LIST
+                      00002 
+                      00003 ;==========================================================================
+                      00004 ;  MPASM PIC16F84A processor include
+                      00005 ; 
+                      00006 ;  (c) Copyright 1999-2013 Microchip Technology, All rights reserved
+                      00007 ;==========================================================================
+                      00008 
+                      00208         LIST
+                      00005 
+                      00006         CBLOCK 0x0C
+                      00007         ENDC
+                      00008 
+Warning[207]: Found label after column 1. (Caracter)
+  0000005A            00009         Caracter EQU    'Z'
+                      00010 
+0000                  00011         ORG 0
+                      00012                 
+0000                  00013 Inicio  
+0000   1683           00014         bsf     STATUS,RP0
+0001   0186           00015         clrf    PORTB
+0002   1283           00016         bcf             STATUS,RP0
+                      00017         
+0003                  00018 Principal
+0003   305A           00019         movlw   Caracter
+0004   2009           00020         call    ASCII_a_7Segmentos
+0005   0086           00021         movwf   PORTB
+0006   2803           00022         goto    Principal
+                      00023 
+                      00024         INCLUDE <DISPLAY_7S.INC>
+                      00001         CBLOCK
+  0000000C            00002         Display7s_Dato
+                      00003         ENDC
+                      00004         
+0007                  00005 Numero_a_7Segmentos
+0007   390F           00006         andlw   b'00001111'
+0008   3930           00007         andlw   '0'
+                      00008 
+0009                  00009 ASCII_a_7Segmentos
+0009   008C           00010         movwf   Display7s_Dato
+000A   3C20           00011         sublw   ' '
+000B   1903           00012         btfsc   STATUS,Z
+000C   3400           00013         retlw   00h
+000D   080C           00014         movf    Display7s_Dato,W
+000E   3CD1           00015         sublw   'Ñ'
+000F   1903           00016         btfsc   STATUS,Z
+0010   3455           00017         retlw   55h
+0011   080C           00018         movf    Display7s_Dato,W
+0012   3CB0           00019         sublw   '°'
+MPASM  5.51                    DISPLAY_05.ASM   9-22-2021  11:33:37         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0013   1903           00020         btfsc   STATUS,Z
+0014   3463           00021         retlw   63h
+                      00022 
+0015   080C           00023         movf    Display7s_Dato,W
+0016   3C5A           00024         sublw   'Z'
+0017   1C03           00025         btfss   STATUS,C
+0018   3480           00026         retlw   b'10000000'
+0019   302B           00027         movlw   '+'
+001A   020C           00028         subwf   Display7s_Dato,W
+001B   1C03           00029         btfss   STATUS,C
+001C   3480           00030         retlw   b'10000000'
+                      00031 
+001D   0782           00032         addwf   PCL,F
+                      00033 
+001E                  00034 InicioTablaASCII
+001E   3446 3404 3440 00035         DT      46h,04h,40h,80h,00h,3Fh,06h,5Bh,4Fh,66h,6Dh
+       3480 3400 343F 
+       3406 345B 344F 
+       3466 346D 
+0029   347D 3407 347F 00036         DT      7Dh,07h,7Fh,67h,41h,88h,00h,48h,00h,00h,00h
+       3467 3441 3488 
+       3400 3448 3400 
+       3400 3400 
+0034   3477 347C 3439 00037         DT      77h,7Ch,39h,5Eh,79h,71h,6Fh,76h,19h,1Eh,7Ah,38h,37h
+       345E 3479 3471 
+       346F 3476 3419 
+       341E 347A 3438 
+       3437 
+0041   3454 343F 3473 00038         DT      54h,3Fh,73h,67h,50h,6Dh,78h,1Ch,3Eh,1Dh,70h,6Eh,49h
+       3467 3450 346D 
+       3478 341C 343E 
+       341D 3470 346E 
+       3449 
+004E                  00039 FinTablaASCII
+                      00040 
+                      00041         IF (FinTablaASCII > 0xFF)
+                      00042                 ERROR "Cuidado la tabla ha superado el tamaño de la pagina"
+                      00043                 MESSG "Primeros 256 bytes de la memoria ROM, NO funcionan correctamente"
+                      00044         ENDIF
+                      00025 
+                      00026                 END
+MPASM  5.51                    DISPLAY_05.ASM   9-22-2021  11:33:37         PAGE  3
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+ASCII_a_7Segmentos                00000009
+C                                 00000000
+Caracter                          0000005A
+DC                                00000001
+Display7s_Dato                    0000000C
+EEADR                             00000009
+EECON1                            00000088
+EECON2                            00000089
+EEDATA                            00000008
+EEIE                              00000006
+EEIF                              00000004
+F                                 00000001
+FSR                               00000004
+FinTablaASCII                     0000004E
+GIE                               00000007
+INDF                              00000000
+INTCON                            0000000B
+INTE                              00000004
+INTEDG                            00000006
+INTF                              00000001
+IRP                               00000007
+Inicio                            00000000
+InicioTablaASCII                  0000001E
+NOT_PD                            00000003
+NOT_RBPU                          00000007
+NOT_TO                            00000004
+Numero_a_7Segmentos               00000007
+OPTION_REG                        00000081
+PCL                               00000002
+PCLATH                            0000000A
+PORTA                             00000005
+PORTB                             00000006
+PS0                               00000000
+PS1                               00000001
+PS2                               00000002
+PSA                               00000003
+Principal                         00000003
+RA0                               00000000
+RA1                               00000001
+RA2                               00000002
+RA3                               00000003
+RA4                               00000004
+RB0                               00000000
+RB1                               00000001
+RB2                               00000002
+RB3                               00000003
+RB4                               00000004
+RB5                               00000005
+RB6                               00000006
+RB7                               00000007
+RBIE                              00000003
+RBIF                              00000000
+RD                                00000000
+MPASM  5.51                    DISPLAY_05.ASM   9-22-2021  11:33:37         PAGE  4
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+RP0                               00000005
+RP1                               00000006
+STATUS                            00000003
+T0CS                              00000005
+T0IE                              00000005
+T0IF                              00000002
+T0SE                              00000004
+TMR0                              00000001
+TMR0IE                            00000005
+TMR0IF                            00000002
+TRISA                             00000085
+TRISA0                            00000000
+TRISA1                            00000001
+TRISA2                            00000002
+TRISA3                            00000003
+TRISA4                            00000004
+TRISB                             00000086
+TRISB0                            00000000
+TRISB1                            00000001
+TRISB2                            00000002
+TRISB3                            00000003
+TRISB4                            00000004
+TRISB5                            00000005
+TRISB6                            00000006
+TRISB7                            00000007
+W                                 00000000
+WR                                00000001
+WREN                              00000002
+WRERR                             00000003
+Z                                 00000002
+_CONFIG                           00002007
+_CP_OFF                           00003FFF
+_CP_ON                            0000000F
+_DEVID1                           00002006
+_FOSC_EXTRC                       00003FFF
+_FOSC_HS                          00003FFE
+_FOSC_LP                          00003FFC
+_FOSC_XT                          00003FFD
+_HS_OSC                           00003FFE
+_IDLOC0                           00002000
+_IDLOC1                           00002001
+_IDLOC2                           00002002
+_IDLOC3                           00002003
+_LP_OSC                           00003FFC
+_PWRTE_OFF                        00003FFF
+_PWRTE_ON                         00003FF7
+_RC_OSC                           00003FFF
+_WDTE_OFF                         00003FFB
+_WDTE_ON                          00003FFF
+_WDT_OFF                          00003FFB
+_WDT_ON                           00003FFF
+_XT_OSC                           00003FFD
+__16F84A                          00000001
+MPASM  5.51                    DISPLAY_05.ASM   9-22-2021  11:33:37         PAGE  5
+
+
+MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
+
+
+0000 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0040 : XXXXXXXXXXXXXX-- ---------------- ---------------- ----------------
+2000 : -------X-------- ---------------- ---------------- ----------------
+
+All other memory blocks unused.
+
+Program Memory Words Used:    78
+Program Memory Words Free:   946
+
+
+Errors   :     0
+Warnings :     1 reported,     0 suppressed
+Messages :     0 reported,     0 suppressed
+
+

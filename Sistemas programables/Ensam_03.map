@@ -1,0 +1,38 @@
+MPLINK 4.49, Linker
+Linker Map File - Created Mon Sep 13 12:15:25 2021
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x000000
+                   .org_1       code   0x000000    program   0x000020
+  .config_2007_ENSAM_03.O       code   0x002007    program   0x000002
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x00000f      
+                            0x002007    0x002007      
+            17 out of 1094 program addresses used, program memory utilization is 1%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+             ActivaSalida   0x00000e    program     static C:\Proteus\Actividad 2\Ensam_03.asm
+                   Inicio   0x000000    program     static C:\Proteus\Actividad 2\Ensam_03.asm
+                Principal   0x000005    program     static C:\Proteus\Actividad 2\Ensam_03.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                   Inicio   0x000000    program     static C:\Proteus\Actividad 2\Ensam_03.asm
+                Principal   0x000005    program     static C:\Proteus\Actividad 2\Ensam_03.asm
+             ActivaSalida   0x00000e    program     static C:\Proteus\Actividad 2\Ensam_03.asm
+
+
