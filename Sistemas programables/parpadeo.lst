@@ -1,4 +1,4 @@
-MPASM  5.51                      PARPADEO.ASM   9-13-2021  13:10:07         PAGE  1
+MPASM  5.51                      PARPADEO.ASM   9-13-2021  13:01:08         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -57,7 +57,7 @@ Message[302]: Register in operand not in bank 0.  Ensure that bank bits are corr
 0018   2819           00041 PDelL6  goto PDelL7
 0019   0064           00042 PDelL7  clrwdt
 001A   0008           00043                 return
-MPASM  5.51                      PARPADEO.ASM   9-13-2021  13:10:07         PAGE  2
+MPASM  5.51                      PARPADEO.ASM   9-13-2021  13:01:08         PAGE  2
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -65,7 +65,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 
                       00044                 
                       00045                 END
-MPASM  5.51                      PARPADEO.ASM   9-13-2021  13:10:07         PAGE  3
+MPASM  5.51                      PARPADEO.ASM   9-13-2021  13:01:08         PAGE  3
 
 
 SYMBOL TABLE
@@ -124,7 +124,7 @@ RB0                               00000000
 RB1                               00000001
 RB2                               00000002
 RB3                               00000003
-MPASM  5.51                      PARPADEO.ASM   9-13-2021  13:10:07         PAGE  4
+MPASM  5.51                      PARPADEO.ASM   9-13-2021  13:01:08         PAGE  4
 
 
 SYMBOL TABLE
@@ -183,7 +183,7 @@ _IDLOC3                           00002003
 _LP_OSC                           00003FFC
 _PWRTE_OFF                        00003FFF
 _PWRTE_ON                         00003FF7
-MPASM  5.51                      PARPADEO.ASM   9-13-2021  13:10:07         PAGE  5
+MPASM  5.51                      PARPADEO.ASM   9-13-2021  13:01:08         PAGE  5
 
 
 SYMBOL TABLE

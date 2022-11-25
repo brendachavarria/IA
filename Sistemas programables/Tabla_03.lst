@@ -1,4 +1,4 @@
-MPASM  5.51                      TABLA_03.ASM   9-20-2021  12:08:13         PAGE  1
+MPASM  5.51                      TABLA_03.ASM   9-20-2021  12:24:58         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -48,7 +48,7 @@ Message[302]: Register in operand not in bank 0.  Ensure that bank bits are corr
 0012   343F           00031         retlw   b'00111111'
                       00032 
                       00033                 END
-MPASM  5.51                      TABLA_03.ASM   9-20-2021  12:08:13         PAGE  2
+MPASM  5.51                      TABLA_03.ASM   9-20-2021  12:24:58         PAGE  2
 
 
 SYMBOL TABLE
@@ -107,7 +107,7 @@ STATUS                            00000003
 T0CS                              00000005
 T0IE                              00000005
 T0IF                              00000002
-MPASM  5.51                      TABLA_03.ASM   9-20-2021  12:08:13         PAGE  3
+MPASM  5.51                      TABLA_03.ASM   9-20-2021  12:24:58         PAGE  3
 
 
 SYMBOL TABLE
@@ -161,7 +161,7 @@ _WDT_OFF                          00003FFB
 _WDT_ON                           00003FFF
 _XT_OSC                           00003FFD
 __16F84A                          00000001
-MPASM  5.51                      TABLA_03.ASM   9-20-2021  12:08:13         PAGE  4
+MPASM  5.51                      TABLA_03.ASM   9-20-2021  12:24:58         PAGE  4
 
 
 MEMORY USAGE MAP ('X' = Used,  '-' = Unused)

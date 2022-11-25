@@ -1,0 +1,58 @@
+MPLINK 4.49, Linker
+Linker Map File - Created Wed Sep 15 11:38:21 2021
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x000000
+                   .org_1       code   0x000000    program   0x00004a
+   .config_2007_TAREA1P.O       code   0x002007    program   0x000002
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000024      
+                            0x002007    0x002007      
+            38 out of 1094 program addresses used, program memory utilization is 3%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                      Fin   0x000011    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\tarea1p.asm
+                   Inicio   0x000000    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\tarea1p.asm
+                   PDelL1   0x000019    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\tarea1p.asm
+                   PDelL2   0x00001a    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\tarea1p.asm
+                   PDelL3   0x00001b    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\tarea1p.asm
+                   PDelL4   0x000020    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\tarea1p.asm
+                   PDelL5   0x000021    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\tarea1p.asm
+                   PDelL6   0x000022    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\tarea1p.asm
+                   PDelL7   0x000023    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\tarea1p.asm
+                   PLoop1   0x000016    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\tarea1p.asm
+                   PLoop2   0x000018    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\tarea1p.asm
+                Principal   0x000005    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\tarea1p.asm
+                    pausa   0x000014    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\tarea1p.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                   Inicio   0x000000    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\tarea1p.asm
+                Principal   0x000005    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\tarea1p.asm
+                      Fin   0x000011    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\tarea1p.asm
+                    pausa   0x000014    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\tarea1p.asm
+                   PLoop1   0x000016    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\tarea1p.asm
+                   PLoop2   0x000018    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\tarea1p.asm
+                   PDelL1   0x000019    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\tarea1p.asm
+                   PDelL2   0x00001a    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\tarea1p.asm
+                   PDelL3   0x00001b    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\tarea1p.asm
+                   PDelL4   0x000020    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\tarea1p.asm
+                   PDelL5   0x000021    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\tarea1p.asm
+                   PDelL6   0x000022    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\tarea1p.asm
+                   PDelL7   0x000023    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\tarea1p.asm
+
+

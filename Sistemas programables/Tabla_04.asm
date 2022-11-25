@@ -7,9 +7,9 @@
 		
 Inicio	
 	bsf 	STATUS,RP0
-	clrf 	TRISB
+	clrf 	PORTB
 	movlw 	b'00011111'
-	movwf	TRISA
+	movwf	PORTA
 	bcf		STATUS,RP0
 	
 Principal
@@ -21,6 +21,6 @@ Principal
 		
 TablaVerdad
 	addwf	PCL,F
-	DT 		0x0A, 0x09, 0x23, 0x0F, 0x20, 0x07, 0x17, 0x3F
+	DT		0x0A, 0x09, 0x23, 0x0F, 0x20, 0x07, 0x17, 0x03F
 
-		END
+	END

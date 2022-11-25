@@ -1,4 +1,4 @@
-MPASM  5.51                    RETARDO_02.ASM   9-22-2021  12:08:53         PAGE  1
+MPASM  5.51                    RETARDO_02.ASM   9-22-2021  12:12:44         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -57,7 +57,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 000F   0000           00014         nop
 0010                  00015 Retardo_4micros
 0010   0008           00016         return
-MPASM  5.51                    RETARDO_02.ASM   9-22-2021  12:08:53         PAGE  2
+MPASM  5.51                    RETARDO_02.ASM   9-22-2021  12:12:44         PAGE  2
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -116,7 +116,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00067 
 0031                  00068 Retardos_ms
 0031   008D           00069         movwf   R_ContB
-MPASM  5.51                    RETARDO_02.ASM   9-22-2021  12:08:53         PAGE  3
+MPASM  5.51                    RETARDO_02.ASM   9-22-2021  12:12:44         PAGE  3
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -170,7 +170,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 0051   0008           00115         return
                       00029 
                       00030                 END
-MPASM  5.51                    RETARDO_02.ASM   9-22-2021  12:08:53         PAGE  4
+MPASM  5.51                    RETARDO_02.ASM   9-22-2021  12:12:44         PAGE  4
 
 
 SYMBOL TABLE
@@ -229,7 +229,7 @@ RP1                               00000006
 R_ContA                           0000000C
 R_ContB                           0000000D
 R_ContC                           0000000E
-MPASM  5.51                    RETARDO_02.ASM   9-22-2021  12:08:53         PAGE  5
+MPASM  5.51                    RETARDO_02.ASM   9-22-2021  12:12:44         PAGE  5
 
 
 SYMBOL TABLE
@@ -288,7 +288,7 @@ TRISB3                            00000003
 TRISB4                            00000004
 TRISB5                            00000005
 TRISB6                            00000006
-MPASM  5.51                    RETARDO_02.ASM   9-22-2021  12:08:53         PAGE  6
+MPASM  5.51                    RETARDO_02.ASM   9-22-2021  12:12:44         PAGE  6
 
 
 SYMBOL TABLE

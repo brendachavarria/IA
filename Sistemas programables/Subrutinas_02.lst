@@ -1,4 +1,4 @@
-MPASM  5.51                 SUBRUTINAS_02.ASM   9-20-2021  11:57:25         PAGE  1
+MPASM  5.51                 SUBRUTINAS_02.ASM   9-20-2021  12:11:56         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -57,7 +57,7 @@ Message[302]: Register in operand not in bank 0.  Ensure that bank bits are corr
 000E   008E           00017         movwf   Unidades
 000F   0A8D           00018         incf    Decenas,F
 0010   300A           00019         movlw   .10
-MPASM  5.51                 SUBRUTINAS_02.ASM   9-20-2021  11:57:25         PAGE  2
+MPASM  5.51                 SUBRUTINAS_02.ASM   9-20-2021  12:11:56         PAGE  2
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -76,7 +76,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 0019   0008           00030         return
                       00031                 
                       00032                 END
-MPASM  5.51                 SUBRUTINAS_02.ASM   9-20-2021  11:57:25         PAGE  3
+MPASM  5.51                 SUBRUTINAS_02.ASM   9-20-2021  12:11:56         PAGE  3
 
 
 SYMBOL TABLE
@@ -135,7 +135,7 @@ RB6                               00000006
 RB7                               00000007
 RBIE                              00000003
 RBIF                              00000000
-MPASM  5.51                 SUBRUTINAS_02.ASM   9-20-2021  11:57:25         PAGE  4
+MPASM  5.51                 SUBRUTINAS_02.ASM   9-20-2021  12:11:56         PAGE  4
 
 
 SYMBOL TABLE
@@ -194,7 +194,7 @@ _RC_OSC                           00003FFF
 _WDTE_OFF                         00003FFB
 _WDTE_ON                          00003FFF
 _WDT_OFF                          00003FFB
-MPASM  5.51                 SUBRUTINAS_02.ASM   9-20-2021  11:57:25         PAGE  5
+MPASM  5.51                 SUBRUTINAS_02.ASM   9-20-2021  12:11:56         PAGE  5
 
 
 SYMBOL TABLE

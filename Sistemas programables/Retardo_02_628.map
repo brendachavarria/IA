@@ -1,0 +1,98 @@
+MPLINK 4.49, Linker
+Linker Map File - Created Wed Sep 29 12:41:39 2021
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x000000
+                   .org_1       code   0x000000    program   0x0000a2
+.config_2007_RETARDO_02_628.O       code   0x002007    program   0x000002
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000050      
+                            0x002007    0x002007      
+            82 out of 1094 program addresses used, program memory utilization is 7%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                   Inicio   0x000000    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\Retardo_02_628.asm
+                Principal   0x000003    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\Retardo_02_628.asm
+    R1Decima_BucleExterno   0x000047    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+   R1Decima_BucleExterno2   0x000045    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+    R1Decima_BucleInterno   0x000049    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+        R1ms_BucleExterno   0x000031    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+        R1ms_BucleInterno   0x000033    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+            RetardoMicros   0x00001d    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+        Retardo_100micros   0x000017    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+            Retardo_100ms   0x000023    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+         Retardo_10micros   0x00000a    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+             Retardo_10ms   0x000029    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+              Retardo_10s   0x00003b    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+          Retardo_1Decima   0x000044    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+              Retardo_1ms   0x00002f    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+               Retardo_1s   0x000041    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+        Retardo_200micros   0x000014    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+            Retardo_200ms   0x000021    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+         Retardo_20micros   0x00001c    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+             Retardo_20ms   0x000027    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+              Retardo_20s   0x000039    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+              Retardo_2ms   0x00002d    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+               Retardo_2s   0x00003f    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+          Retardo_4micros   0x000010    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+        Retardo_500micros   0x000011    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+            Retardo_500ms   0x000043    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+         Retardo_50micros   0x000019    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+             Retardo_50ms   0x000025    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+          Retardo_5micros   0x00000f    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+              Retardo_5ms   0x00002b    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+               Retardo_5s   0x00003d    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+              Retardos_ms   0x000030    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+            Rmicros_Bucle   0x00001e    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                   Inicio   0x000000    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\Retardo_02_628.asm
+                Principal   0x000003    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\Retardo_02_628.asm
+         Retardo_10micros   0x00000a    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+          Retardo_5micros   0x00000f    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+          Retardo_4micros   0x000010    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+        Retardo_500micros   0x000011    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+        Retardo_200micros   0x000014    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+        Retardo_100micros   0x000017    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+         Retardo_50micros   0x000019    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+         Retardo_20micros   0x00001c    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+            RetardoMicros   0x00001d    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+            Rmicros_Bucle   0x00001e    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+            Retardo_200ms   0x000021    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+            Retardo_100ms   0x000023    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+             Retardo_50ms   0x000025    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+             Retardo_20ms   0x000027    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+             Retardo_10ms   0x000029    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+              Retardo_5ms   0x00002b    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+              Retardo_2ms   0x00002d    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+              Retardo_1ms   0x00002f    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+              Retardos_ms   0x000030    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+        R1ms_BucleExterno   0x000031    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+        R1ms_BucleInterno   0x000033    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+              Retardo_20s   0x000039    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+              Retardo_10s   0x00003b    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+               Retardo_5s   0x00003d    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+               Retardo_2s   0x00003f    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+               Retardo_1s   0x000041    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+            Retardo_500ms   0x000043    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+          Retardo_1Decima   0x000044    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+   R1Decima_BucleExterno2   0x000045    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+    R1Decima_BucleExterno   0x000047    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+    R1Decima_BucleInterno   0x000049    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+
+

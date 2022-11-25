@@ -1,11 +1,11 @@
 MPLINK 4.49, Linker
-Linker Map File - Created Wed Sep 22 12:55:07 2021
+Linker Map File - Created Wed Sep 22 13:15:06 2021
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
                 ---------  ---------  ---------  ---------  ---------
                    .org_0       code   0x000000    program   0x000000
-                   .org_1       code   0x000000    program   0x00014e
+                   .org_1       code   0x000000    program   0x00014c
 .config_2007_PULSADOR_01.O       code   0x002007    program   0x000002
 
 
@@ -13,104 +13,104 @@ Linker Map File - Created Wed Sep 22 12:55:07 2021
                               Program Memory Usage 
                                Start         End      
                            ---------   ---------      
-                            0x000000    0x0000a6      
+                            0x000000    0x0000a5      
                             0x002007    0x002007      
-            168 out of 1094 program addresses used, program memory utilization is 15%
+            167 out of 1094 program addresses used, program memory utilization is 15%
 
 
 
                               Symbols - Sorted by Name
                      Name    Address   Location    Storage File                     
                 ---------  ---------  ---------  --------- ---------                
-       ASCII_a_7Segmentos   0x00001a    program     static C:\Proteus\Actividad 2\DISPLAY_7S.INC
-         EsperaDejePulsar   0x00000c    program     static C:\Proteus\Actividad 2\Pulsador_01.asm
-                      Fin   0x00000e    program     static C:\Proteus\Actividad 2\Pulsador_01.asm
-            FinTablaASCII   0x00005f    program     static C:\Proteus\Actividad 2\DISPLAY_7S.INC
-      IncrementaVisualiza   0x00000f    program     static C:\Proteus\Actividad 2\Pulsador_01.asm
-       InicializaContador   0x000013    program     static C:\Proteus\Actividad 2\Pulsador_01.asm
-                   Inicio   0x000000    program     static C:\Proteus\Actividad 2\Pulsador_01.asm
-         InicioTablaASCII   0x00002f    program     static C:\Proteus\Actividad 2\DISPLAY_7S.INC
-      Numero_a_7Segmentos   0x000018    program     static C:\Proteus\Actividad 2\DISPLAY_7S.INC
-                Principal   0x000006    program     static C:\Proteus\Actividad 2\Pulsador_01.asm
-            RetardoMicros   0x000072    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-        Retardo_100micros   0x00006c    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-            Retardo_100ms   0x000078    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-         Retardo_10micros   0x00005f    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-             Retardo_10ms   0x00007e    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-              Retardo_10s   0x000091    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-              Retardo_1ms   0x000084    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-               Retardo_1s   0x000097    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-        Retardo_200micros   0x000069    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-            Retardo_200ms   0x000076    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-         Retardo_20micros   0x000071    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-             Retardo_20ms   0x00007c    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-              Retardo_20s   0x00008f    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-              Retardo_2ms   0x000082    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-               Retardo_2s   0x000095    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-          Retardo_4micros   0x000065    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-        Retardo_500micros   0x000066    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-            Retardo_500ms   0x000099    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-             Retardo_50ms   0x00007a    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-          Retardo_5micros   0x000064    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-              Retardo_5ms   0x000080    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-               Retardo_5s   0x000093    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-          Retardo_lDecima   0x00009a    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-        Retardos_50micros   0x00006e    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-              Retardos_ms   0x000086    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-    RlDecima_BucleExterno   0x00009d    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-   RlDecima_BucleExterno2   0x00009b    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-    RlDecima_BucleInterno   0x00009f    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-        Rlms_BucleExterno   0x000087    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-        Rlms_BucleInterno   0x000089    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-            Rmicros_Bucle   0x000073    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-                Visualiza   0x000014    program     static C:\Proteus\Actividad 2\Pulsador_01.asm
+       ASCII_a_7Segmentos   0x00001a    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\DISPLAY_7S.INC
+         EsperaDejePulsar   0x00000c    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\Pulsador_01.asm
+                      Fin   0x00000e    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\Pulsador_01.asm
+            FinTablaASCII   0x00005f    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\DISPLAY_7S.INC
+      IncrementaVisualiza   0x00000f    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\Pulsador_01.asm
+       InicializaContador   0x000013    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\Pulsador_01.asm
+                   Inicio   0x000000    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\Pulsador_01.asm
+         InicioTablaASCII   0x00002f    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\DISPLAY_7S.INC
+      Numero_a_7Segmentos   0x000018    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\DISPLAY_7S.INC
+                Principal   0x000006    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\Pulsador_01.asm
+    R1Decima_BucleExterno   0x00009c    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+   R1Decima_BucleExterno2   0x00009a    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+    R1Decima_BucleInterno   0x00009e    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+        R1ms_BucleExterno   0x000086    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+        R1ms_BucleInterno   0x000088    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+            RetardoMicros   0x000072    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+        Retardo_100micros   0x00006c    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+            Retardo_100ms   0x000078    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+         Retardo_10micros   0x00005f    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+             Retardo_10ms   0x00007e    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+              Retardo_10s   0x000090    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+          Retardo_1Decima   0x000099    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+              Retardo_1ms   0x000084    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+               Retardo_1s   0x000096    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+        Retardo_200micros   0x000069    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+            Retardo_200ms   0x000076    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+         Retardo_20micros   0x000071    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+             Retardo_20ms   0x00007c    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+              Retardo_20s   0x00008e    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+              Retardo_2ms   0x000082    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+               Retardo_2s   0x000094    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+          Retardo_4micros   0x000065    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+        Retardo_500micros   0x000066    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+            Retardo_500ms   0x000098    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+         Retardo_50micros   0x00006e    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+             Retardo_50ms   0x00007a    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+          Retardo_5micros   0x000064    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+              Retardo_5ms   0x000080    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+               Retardo_5s   0x000092    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+              Retardos_ms   0x000085    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+            Rmicros_Bucle   0x000073    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+                Visualiza   0x000014    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\Pulsador_01.asm
 
 
 
                               Symbols - Sorted by Address
                      Name    Address   Location    Storage File                     
                 ---------  ---------  ---------  --------- ---------                
-                   Inicio   0x000000    program     static C:\Proteus\Actividad 2\Pulsador_01.asm
-                Principal   0x000006    program     static C:\Proteus\Actividad 2\Pulsador_01.asm
-         EsperaDejePulsar   0x00000c    program     static C:\Proteus\Actividad 2\Pulsador_01.asm
-                      Fin   0x00000e    program     static C:\Proteus\Actividad 2\Pulsador_01.asm
-      IncrementaVisualiza   0x00000f    program     static C:\Proteus\Actividad 2\Pulsador_01.asm
-       InicializaContador   0x000013    program     static C:\Proteus\Actividad 2\Pulsador_01.asm
-                Visualiza   0x000014    program     static C:\Proteus\Actividad 2\Pulsador_01.asm
-      Numero_a_7Segmentos   0x000018    program     static C:\Proteus\Actividad 2\DISPLAY_7S.INC
-       ASCII_a_7Segmentos   0x00001a    program     static C:\Proteus\Actividad 2\DISPLAY_7S.INC
-         InicioTablaASCII   0x00002f    program     static C:\Proteus\Actividad 2\DISPLAY_7S.INC
-         Retardo_10micros   0x00005f    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-            FinTablaASCII   0x00005f    program     static C:\Proteus\Actividad 2\DISPLAY_7S.INC
-          Retardo_5micros   0x000064    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-          Retardo_4micros   0x000065    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-        Retardo_500micros   0x000066    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-        Retardo_200micros   0x000069    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-        Retardo_100micros   0x00006c    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-        Retardos_50micros   0x00006e    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-         Retardo_20micros   0x000071    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-            RetardoMicros   0x000072    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-            Rmicros_Bucle   0x000073    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-            Retardo_200ms   0x000076    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-            Retardo_100ms   0x000078    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-             Retardo_50ms   0x00007a    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-             Retardo_20ms   0x00007c    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-             Retardo_10ms   0x00007e    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-              Retardo_5ms   0x000080    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-              Retardo_2ms   0x000082    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-              Retardo_1ms   0x000084    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-              Retardos_ms   0x000086    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-        Rlms_BucleExterno   0x000087    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-        Rlms_BucleInterno   0x000089    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-              Retardo_20s   0x00008f    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-              Retardo_10s   0x000091    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-               Retardo_5s   0x000093    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-               Retardo_2s   0x000095    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-               Retardo_1s   0x000097    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-            Retardo_500ms   0x000099    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-          Retardo_lDecima   0x00009a    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-   RlDecima_BucleExterno2   0x00009b    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-    RlDecima_BucleExterno   0x00009d    program     static C:\Proteus\Actividad 2\RETARDOS.INC
-    RlDecima_BucleInterno   0x00009f    program     static C:\Proteus\Actividad 2\RETARDOS.INC
+                   Inicio   0x000000    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\Pulsador_01.asm
+                Principal   0x000006    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\Pulsador_01.asm
+         EsperaDejePulsar   0x00000c    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\Pulsador_01.asm
+                      Fin   0x00000e    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\Pulsador_01.asm
+      IncrementaVisualiza   0x00000f    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\Pulsador_01.asm
+       InicializaContador   0x000013    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\Pulsador_01.asm
+                Visualiza   0x000014    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\Pulsador_01.asm
+      Numero_a_7Segmentos   0x000018    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\DISPLAY_7S.INC
+       ASCII_a_7Segmentos   0x00001a    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\DISPLAY_7S.INC
+         InicioTablaASCII   0x00002f    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\DISPLAY_7S.INC
+         Retardo_10micros   0x00005f    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+            FinTablaASCII   0x00005f    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\DISPLAY_7S.INC
+          Retardo_5micros   0x000064    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+          Retardo_4micros   0x000065    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+        Retardo_500micros   0x000066    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+        Retardo_200micros   0x000069    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+        Retardo_100micros   0x00006c    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+         Retardo_50micros   0x00006e    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+         Retardo_20micros   0x000071    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+            RetardoMicros   0x000072    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+            Rmicros_Bucle   0x000073    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+            Retardo_200ms   0x000076    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+            Retardo_100ms   0x000078    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+             Retardo_50ms   0x00007a    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+             Retardo_20ms   0x00007c    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+             Retardo_10ms   0x00007e    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+              Retardo_5ms   0x000080    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+              Retardo_2ms   0x000082    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+              Retardo_1ms   0x000084    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+              Retardos_ms   0x000085    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+        R1ms_BucleExterno   0x000086    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+        R1ms_BucleInterno   0x000088    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+              Retardo_20s   0x00008e    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+              Retardo_10s   0x000090    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+               Retardo_5s   0x000092    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+               Retardo_2s   0x000094    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+               Retardo_1s   0x000096    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+            Retardo_500ms   0x000098    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+          Retardo_1Decima   0x000099    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+   R1Decima_BucleExterno2   0x00009a    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+    R1Decima_BucleExterno   0x00009c    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
+    R1Decima_BucleInterno   0x00009e    program     static C:\Users\Brenda\Dropbox\PC\Documents\7 semestre\2. Sistemas Programables\UNIDAD I\ENTRENADOR\RETARDOS.INC
 
 

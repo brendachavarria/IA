@@ -1,13 +1,12 @@
-MPASM  5.51                 SUBRUTINAS_01.ASM   9-20-2021  11:45:45         PAGE  1
+MPASM  5.51                 SUBRUTINAS_01.ASM   9-20-2021  12:15:15         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
 2007   3FF1           00001         __CONFIG _CP_OFF&_WDT_OFF&_PWRTE_ON&_XT_OSC
-                      00002         
-                      00003         LIST    P=16F84A
-                      00004         INCLUDE <P16F84A.INC>
+                      00002                 LIST    P=16F84A
+                      00003                 INCLUDE <P16F84A.INC>
                       00001         LIST
                       00002 
                       00003 ;==========================================================================
@@ -17,65 +16,62 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00007 ;==========================================================================
                       00008 
                       00208         LIST
-                      00005 
-                      00006         CBLOCK 0x0C
-                      00007         ENDC
-                      00008 
-  000000AF            00009 Numero  EQU     .175
-                      00010 
-0000                  00011         ORG 0
-                      00012                 
-0000                  00013 Inicio  
-0000   1683           00014         bsf STATUS,RP0
+                      00004 
+                      00005                 CBLOCK 0x0C ;posicion en la que empieza la memoria RAM
+                      00006                 ENDC
+                      00007                 
+  000000AF            00008 Numero  EQU     .175
+                      00009 
+0000                  00010                 ORG     0
+0000                  00011 Inicio
+0000   1683           00012                 bsf             STATUS,RP0  ;acceso al banco 1
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-0001   0186           00015         clrf TRISB
-0002   1283           00016         bcf     STATUS,RP0
-                      00017         
-0003                  00018 Principal
-0003   30AF           00019         movlw   Numero
-0004   2007           00020         call    BIN_a_BCD
-0005   0086           00021         movwf   PORTB
-0006   2806           00022         goto    $
-                      00023 
-                      00024         CBLOCK
-  0000000C            00025         Centenas
-  0000000D            00026         Decenas
-  0000000E            00027         Unidades
-                      00028         ENDC
-                      00029         
-0007                  00030 BIN_a_BCD
-0007   018C           00031         clrf    Centenas
-0008   018D           00032         clrf    Decenas
-0009   008E           00033         movwf   Unidades
-000A                  00034 Resta10
-000A   300A           00035         movlw   .10
-000B   020E           00036         subwf   Unidades,W
-000C   1C03           00037         btfss   STATUS,C
-000D   2817           00038         goto    Fin_BIN_BCD
-000E                  00039 IncrementaDecenas
-000E   008E           00040         movwf   Unidades
-000F   0A8D           00041         incf    Decenas,F
-0010   300A           00042         movlw   .10
-0011   020D           00043         subwf   Decenas,W
-MPASM  5.51                 SUBRUTINAS_01.ASM   9-20-2021  11:45:45         PAGE  2
+0001   0186           00013                 clrf    TRISB   ;puerto b se configura de salida
+0002   1283           00014                 bcf             STATUS,RP0      ;acceso al banco 0
+0003                  00015 Principal
+0003   30AF           00016                 movlw   Numero
+0004   2007           00017                 call    BIN_a_BCD
+0005   0086           00018                 movwf   PORTB  ;el resultado se vizualiza en la salida
+0006   2806           00019                 goto    $
+                      00020                 CBLOCK
+  0000000C            00021                 Centenas
+  0000000D            00022                 Decenas
+  0000000E            00023                 Unidades
+                      00024                 ENDC
+                      00025 
+0007                  00026 BIN_a_BCD
+0007   018C           00027                 clrf    Centenas
+0008   018D           00028                 clrf    Decenas
+0009   008E           00029                 movwf   Unidades
+000A                  00030 Resta10
+000A   300A           00031                 movlw   .10
+000B   020E           00032                 subwf   Unidades,W
+000C   1C03           00033                 btfss   STATUS,C
+000D   2817           00034                 goto    Fin_BIN_BCD
+000E                  00035 IncrementaDecenas
+000E   008E           00036                 movwf   Unidades
+000F   0A8D           00037                 incf    Decenas,F
+0010   300A           00038                 movlw   .10
+0011   020D           00039                 subwf   Decenas,W
+0012   1C03           00040                 btfss   STATUS,C
+0013   280A           00041                 goto    Resta10
+0014                  00042 IncrementaCentenas
+0014   018D           00043                 clrf    Decenas
+MPASM  5.51                 SUBRUTINAS_01.ASM   9-20-2021  12:15:15         PAGE  2
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-0012   1C03           00044         btfss   STATUS,C
-0013   280A           00045         goto    Resta10
-0014                  00046 IncrementaCentenas
-0014   018D           00047         clrf    Decenas
-0015   0A8C           00048         incf    Centenas,F
-0016   280A           00049         goto    Resta10
-0017                  00050 Fin_BIN_BCD
-0017   0E0D           00051         swapf   Decenas,W
-0018   070E           00052         addwf   Unidades,W
-0019   0008           00053         return
-                      00054                 
-                      00055                 END
-MPASM  5.51                 SUBRUTINAS_01.ASM   9-20-2021  11:45:45         PAGE  3
+0015   0A8C           00044                 incf    Centenas,F
+0016   280A           00045                 goto    Resta10
+0017                  00046 Fin_BIN_BCD
+0017   0E0D           00047                 swapf   Decenas,W
+0018   070E           00048                 addwf   Unidades,W
+0019   0008           00049                 return
+                      00050                 
+                      00051                 END
+MPASM  5.51                 SUBRUTINAS_01.ASM   9-20-2021  12:15:15         PAGE  3
 
 
 SYMBOL TABLE
@@ -134,7 +130,7 @@ RB6                               00000006
 RB7                               00000007
 RBIE                              00000003
 RBIF                              00000000
-MPASM  5.51                 SUBRUTINAS_01.ASM   9-20-2021  11:45:45         PAGE  4
+MPASM  5.51                 SUBRUTINAS_01.ASM   9-20-2021  12:15:15         PAGE  4
 
 
 SYMBOL TABLE
@@ -193,7 +189,7 @@ _RC_OSC                           00003FFF
 _WDTE_OFF                         00003FFB
 _WDTE_ON                          00003FFF
 _WDT_OFF                          00003FFB
-MPASM  5.51                 SUBRUTINAS_01.ASM   9-20-2021  11:45:45         PAGE  5
+MPASM  5.51                 SUBRUTINAS_01.ASM   9-20-2021  12:15:15         PAGE  5
 
 
 SYMBOL TABLE
