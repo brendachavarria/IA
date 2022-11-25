@@ -1,0 +1,625 @@
+MPASM  5.51                     LCD_3_84A.ASM   10-4-2021  11:21:16         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+2007   3FF1           00001         __CONFIG   _CP_OFF &  _WDT_OFF & _PWRTE_ON & _XT_OSC
+                      00002         LIST       P=16F84A
+                      00003         INCLUDE  <P16F84A.INC>
+                      00001         LIST
+                      00002 
+                      00003 ;==========================================================================
+                      00004 ;  MPASM PIC16F84A processor include
+                      00005 ; 
+                      00006 ;  (c) Copyright 1999-2013 Microchip Technology, All rights reserved
+                      00007 ;==========================================================================
+                      00008 
+                      00208         LIST
+                      00004 
+                      00005         CBLOCK  0x0C
+                      00006         ENDC
+                      00007 
+  0000001D            00008 Numero_NoCeroAlto       EQU     0x1D    
+  0000000D            00009 Numero_CeroAlto         EQU     0x0D    
+                      00010 
+0000                  00011         ORG     0
+0000                  00012 Inicio
+0000   2013           00013         call    LCD_Inicializa
+0001                  00014 Principal
+0001   301D           00015         movlw   Numero_NoCeroAlto
+0002   2088           00016         call    LCD_ByteCompleto
+0003   2078           00017         call    LCD_DosEspaciosBlancos
+0004   301D           00018         movlw   Numero_NoCeroAlto
+0005   2081           00019         call    LCD_Byte
+0006   2078           00020         call    LCD_DosEspaciosBlancos
+0007   301D           00021         movlw   Numero_NoCeroAlto
+0008   208C           00022         call    LCD_Nibble
+0009   2043           00023         call    LCD_Linea2              
+000A   300D           00024         movlw   Numero_CeroAlto
+000B   2088           00025         call    LCD_ByteCompleto
+000C   2078           00026         call    LCD_DosEspaciosBlancos
+000D   300D           00027         movlw   Numero_CeroAlto
+000E   2081           00028         call    LCD_Byte
+000F   2078           00029         call    LCD_DosEspaciosBlancos
+0010   300D           00030         movlw   Numero_CeroAlto
+0011   208C           00031         call    LCD_Nibble
+0012   0063           00032         sleep
+                      00033 
+                      00034         INCLUDE  <LCD_4BIT.INC>
+                      00001 
+Warning[205]: Found directive in column 1. (CBLOCK)
+                      00002 CBLOCK
+  0000000C            00003         LCD_Dato
+  0000000D            00004         LCD_GuardaDato
+  0000000E            00005         LCD_GuardaTRISB
+  0000000F            00006         LCD_Auxiliar1
+  00000010            00007         LCD_Auxiliar2
+                      00008         ENDC
+                      00009 
+MPASM  5.51                     LCD_3_84A.ASM   10-4-2021  11:21:16         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+  00000010            00010 LCD_CaracteresPorLinea  EQU     .16
+                      00011 
+                      00012 #DEFINE  LCD_PinRS      PORTA,0
+                      00013 #DEFINE  LCD_PinRW      PORTA,1
+                      00014 #DEFINE  LCD_PinEnable  PORTA,2
+                      00015 #DEFINE  LCD_BusDatos   PORTB
+                      00016 
+0013                  00017 LCD_Inicializa
+0013   1683           00018         bsf     STATUS,RP0              
+0014   1005           00019         bcf     LCD_PinRS               
+0015   1105           00020         bcf     LCD_PinEnable
+0016   1085           00021         bcf     LCD_PinRW
+0017   1283           00022         bcf     STATUS,RP0
+0018   1085           00023         bcf     LCD_PinRW               
+0019   1105           00024         bcf     LCD_PinEnable   
+001A   1005           00025         bcf     LCD_PinRS       
+001B   20B4           00026         call    Retardo_20ms
+001C   3030           00027         movlw   b'00110000'     
+001D   202B           00028         call    LCD_EscribeLCD  
+001E   20B8           00029         call    Retardo_5ms     
+001F   3030           00030         movlw   b'00110000'     
+0020   202B           00031         call    LCD_EscribeLCD
+0021   20A1           00032         call    Retardo_200micros
+0022   3030           00033         movlw   b'00110000'     
+0023   202B           00034         call    LCD_EscribeLCD
+0024   3020           00035         movlw   b'00100000'             
+0025   202B           00036         call    LCD_EscribeLCD
+0026   2051           00037         call    LCD_2Lineas4Bits5x7     
+0027   204F           00038         call    LCD_Borra               
+0028   204D           00039         call    LCD_CursorOFF   
+0029   203F           00040         call    LCD_CursorIncr  
+002A   0008           00041         return
+                      00042         
+002B                  00043 LCD_EscribeLCD
+002B   39F0           00044         andlw   b'11110000'             
+002C   008C           00045         movwf   LCD_Dato                
+002D   0806           00046         movf    LCD_BusDatos,W  
+002E   390F           00047         andlw   b'00001111'             
+002F   048C           00048         iorwf   LCD_Dato,F      
+0030   1683           00049         bsf     STATUS,RP0              
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0031   0806           00050         movf    TRISB,W         
+0032   008E           00051         movwf   LCD_GuardaTRISB
+0033   300F           00052         movlw   b'00001111'      
+0034   0586           00053         andwf   PORTB,F         
+0035   1283           00054         bcf     STATUS,RP0              
+                      00055         
+0036   080C           00056         movf    LCD_Dato,W      
+0037   0086           00057         movwf   LCD_BusDatos
+0038   1505           00058         bsf     LCD_PinEnable   
+0039   1105           00059         bcf     LCD_PinEnable   
+003A   1683           00060         bsf     STATUS,RP0              
+003B   080E           00061         movf    LCD_GuardaTRISB,W       
+MPASM  5.51                     LCD_3_84A.ASM   10-4-2021  11:21:16         PAGE  3
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+003C   0086           00062         movwf   PORTB           
+003D   1283           00063         bcf     STATUS,RP0              
+003E   0008           00064         return
+                      00065 ; Subrutinas variadas para el control del módulo LCD ---
+                      00066 
+003F                  00067 LCD_CursorIncr                  
+003F   3006           00068         movlw   b'00000110'
+0040   2852           00069         goto    LCD_EnviaComando
+0041                  00070 LCD_Linea1                              
+0041   3080           00071         movlw   b'10000000'     
+0042   2852           00072         goto    LCD_EnviaComando
+0043                  00073 LCD_Linea2                              
+0043   30C0           00074         movlw   b'11000000'     
+0044   2852           00075         goto    LCD_EnviaComando
+0045                  00076 LCD_PosicionLinea1              
+0045   3880           00077         iorlw   b'10000000'     
+0046   2852           00078         goto    LCD_EnviaComando        
+0047                  00079 LCD_PosicionLinea2                      
+0047   38C0           00080         iorlw   b'11000000'             
+0048   2852           00081         goto    LCD_EnviaComando
+0049                  00082 LCD_OFF                         
+0049   3008           00083         movlw   b'00001000'
+004A   2852           00084         goto    LCD_EnviaComando
+004B                  00085 LCD_CursorON                            
+004B   300E           00086         movlw   b'00001110'
+004C   2852           00087         goto    LCD_EnviaComando
+004D                  00088 LCD_CursorOFF                           
+004D   300C           00089         movlw   b'00001100'
+004E   2852           00090         goto    LCD_EnviaComando
+004F                  00091 LCD_Borra                                
+004F   3001           00092         movlw   b'00000001'     
+0050   2852           00093         goto    LCD_EnviaComando
+0051                  00094 LCD_2Lineas4Bits5x7             
+0051   3028           00095         movlw   b'00101000'     
+                      00096 ;       goto    LCD_EnviaComando
+                      00097         
+                      00098 ; Subrutinas "LCD_EnviaComando" y "LCD_Caracter" --
+0052                  00099 LCD_EnviaComando
+0052   1005           00100         bcf     LCD_PinRS               
+0053   2856           00101         goto    LCD_Envia
+0054                  00102 LCD_Caracter
+0054   1405           00103         bsf     LCD_PinRS               
+0055   205E           00104         call    LCD_CodigoCGROM
+0056                  00105 LCD_Envia
+0056   008D           00106         movwf   LCD_GuardaDato          
+0057   202B           00107         call    LCD_EscribeLCD          
+0058   0E0D           00108         swapf   LCD_GuardaDato,W                                        
+0059   202B           00109         call    LCD_EscribeLCD  
+005A   1C05           00110         btfss   LCD_PinRS                
+005B   20BA           00111         call    Retardo_2ms             
+005C   20A6           00112         call    Retardo_50micros
+005D   0008           00113         return  
+                      00114         
+MPASM  5.51                     LCD_3_84A.ASM   10-4-2021  11:21:16         PAGE  4
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+005E                  00115 LCD_CodigoCGROM
+005E   008C           00116         movwf   LCD_Dato                
+005F                  00117 LCD_EnheMinuscula                       
+005F   3CF1           00118         sublw   'ñ'             
+0060   1D03           00119         btfss   STATUS,Z
+0061   2865           00120         goto    LCD_EnheMayuscula
+0062   30EE           00121         movlw   b'11101110'             
+0063   008C           00122         movwf   LCD_Dato
+0064   2872           00123         goto    LCD_FinCGROM
+0065                  00124 LCD_EnheMayuscula
+0065   080C           00125         movf    LCD_Dato,W              
+0066   3CD1           00126         sublw   'Ñ'                     
+0067   1D03           00127         btfss   STATUS,Z
+0068   286C           00128         goto    LCD_Grado               
+0069   30EE           00129         movlw   b'11101110'     
+006A   008C           00130         movwf   LCD_Dato                
+006B   2872           00131         goto    LCD_FinCGROM    
+006C                  00132 LCD_Grado
+006C   080C           00133         movf    LCD_Dato,W              
+006D   3CBA           00134         sublw   'º'                     
+006E   1D03           00135         btfss   STATUS,Z
+006F   2872           00136         goto    LCD_FinCGROM    
+0070   30DF           00137         movlw   b'11011111'     
+0071   008C           00138         movwf   LCD_Dato
+0072                  00139 LCD_FinCGROM
+0072   080C           00140         movf    LCD_Dato,W      
+0073   0008           00141         return
+                      00142         
+0074                  00143 LCD_LineaEnBlanco
+0074   3010           00144         movlw   LCD_CaracteresPorLinea
+0075   287B           00145         goto    LCD_EnviaBlancos
+0076                  00146 LCD_UnEspacioBlanco
+0076   3001           00147         movlw   .1
+0077   287B           00148         goto    LCD_EnviaBlancos
+0078                  00149 LCD_DosEspaciosBlancos
+0078   3002           00150         movlw   .2
+0079   287B           00151         goto    LCD_EnviaBlancos
+007A                  00152 LCD_TresEspaciosBlancos
+007A   3003           00153         movlw   .3
+007B                  00154 LCD_EnviaBlancos
+007B   008F           00155         movwf   LCD_Auxiliar1   
+007C                  00156 LCD_EnviaOtroBlanco     
+007C   3020           00157         movlw   ' '                     
+007D   2054           00158         call    LCD_Caracter            
+007E   0B8F           00159         decfsz  LCD_Auxiliar1,F         
+007F   287C           00160         goto    LCD_EnviaOtroBlanco
+0080   0008           00161         return
+                      00162         
+0081                  00163 LCD_Byte
+0081   0090           00164         movwf   LCD_Auxiliar2           
+0082   39F0           00165         andlw   b'11110000'             
+0083   1D03           00166         btfss   STATUS,Z                
+0084   2889           00167         goto    LCD_VisualizaAlto               
+MPASM  5.51                     LCD_3_84A.ASM   10-4-2021  11:21:16         PAGE  5
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0085   3020           00168         movlw   ' '                     
+0086   2054           00169         call    LCD_Caracter
+0087   288B           00170         goto    LCD_VisualizaBajo
+                      00171 
+0088                  00172 LCD_ByteCompleto
+0088   0090           00173         movwf   LCD_Auxiliar2           
+0089                  00174 LCD_VisualizaAlto
+0089   0E10           00175         swapf   LCD_Auxiliar2,W 
+008A   208C           00176         call    LCD_Nibble      
+008B                  00177 LCD_VisualizaBajo
+008B   0810           00178         movf    LCD_Auxiliar2,W          
+                      00179 ;       call    LCD_Nibble              
+                      00180 ;       return
+008C                  00181 LCD_Nibble
+008C   390F           00182         andlw   b'00001111'             
+008D   008F           00183         movwf   LCD_Auxiliar1   
+008E   3C09           00184         sublw   0x09            
+008F   1C03           00185         btfss   STATUS,C        
+0090   2894           00186         goto    LCD_EnviaByteLetra
+0091   080F           00187         movf    LCD_Auxiliar1,W
+0092   3E30           00188         addlw   '0'             
+0093   2896           00189         goto    LCD_FinVisualizaDigito  
+0094                  00190 LCD_EnviaByteLetra
+0094   080F           00191         movf    LCD_Auxiliar1,W
+0095   3E37           00192         addlw   'A'-0x0A                         
+0096                  00193 LCD_FinVisualizaDigito
+0096   2854           00194         goto    LCD_Caracter    
+                      00195                                 
+                      00035         INCLUDE  <RETARDOS.INC>
+Warning[205]: Found directive in column 1. (CBLOCK)
+                      00001 CBLOCK
+  00000011            00002 R_ContA
+  00000012            00003 R_ContB
+  00000013            00004 R_ContC
+Warning[205]: Found directive in column 1. (ENDC)
+                      00005 ENDC
+                      00006 
+0097                  00007 Retardo_10micros
+0097   0000           00008         nop             
+0098   0000           00009         nop
+0099   0000           00010         nop
+009A   0000           00011         nop
+009B   0000           00012         nop
+009C                  00013 Retardo_5micros
+009C   0000           00014         nop
+009D                  00015 Retardo_4micros
+009D   0008           00016         return
+                      00017         
+009E                  00018 Retardo_500micros
+009E   0000           00019         nop
+009F   30A4           00020         movlw   d'164'
+00A0   28AA           00021         goto    RetardoMicros
+00A1                  00022 Retardo_200micros
+MPASM  5.51                     LCD_3_84A.ASM   10-4-2021  11:21:16         PAGE  6
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+00A1   0000           00023         nop
+00A2   3040           00024         movlw   d'64'
+00A3   28AA           00025         goto    RetardoMicros
+00A4                  00026 Retardo_100micros
+00A4   301F           00027         movlw   d'31'
+00A5   28AA           00028         goto    RetardoMicros
+00A6                  00029 Retardo_50micros
+00A6   0000           00030         nop
+00A7   300E           00031         movlw   d'14'
+00A8   28AA           00032         goto    RetardoMicros
+00A9                  00033 Retardo_20micros
+00A9   3005           00034         movlw   d'5'
+                      00035         
+                      00036 
+00AA                  00037 RetardoMicros   
+00AA   0091           00038         movwf   R_ContA
+00AB                  00039 Rmicros_Bucle
+00AB   0B91           00040         decfsz  R_ContA,F
+00AC   28AB           00041         goto    Rmicros_Bucle
+00AD   0008           00042         return
+                      00043 
+00AE                  00044 Retardo_200ms
+00AE   30C8           00045         movlw   d'200'
+00AF   28BD           00046         goto    Retardos_ms
+00B0                  00047 Retardo_100ms
+00B0   3064           00048         movlw   d'100'
+00B1   28BD           00049         goto    Retardos_ms
+00B2                  00050 Retardo_50ms
+00B2   3032           00051         movlw   d'50'
+00B3   28BD           00052         goto    Retardos_ms
+00B4                  00053 Retardo_20ms
+00B4   3014           00054         movlw   d'20'
+00B5   28BD           00055         goto    Retardos_ms
+00B6                  00056 Retardo_10ms
+00B6   300A           00057         movlw   d'10'
+00B7   28BD           00058         goto    Retardos_ms
+00B8                  00059 Retardo_5ms
+00B8   3005           00060         movlw   d'5'
+00B9   28BD           00061         goto    Retardos_ms
+00BA                  00062 Retardo_2ms
+00BA   3002           00063         movlw   d'2'
+00BB   28BD           00064         goto    Retardos_ms
+00BC                  00065 Retardo_1ms
+00BC   3001           00066         movlw   d'1'
+                      00067         
+00BD                  00068 Retardos_ms
+00BD   0092           00069                 movwf   R_ContB
+00BE                  00070 R1ms_BucleExterno
+00BE   30F9           00071                 movlw   d'249'
+00BF   0091           00072                 movwf   R_ContA
+00C0                  00073 R1ms_BucleInterno
+00C0   0000           00074                 nop
+00C1   0B91           00075                 decfsz  R_ContA,F
+MPASM  5.51                     LCD_3_84A.ASM   10-4-2021  11:21:16         PAGE  7
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+00C2   28C0           00076                 goto    R1ms_BucleInterno
+00C3   0B92           00077                 decfsz  R_ContB,F
+00C4   28BE           00078                 goto    R1ms_BucleExterno
+00C5   0008           00079                 return
+                      00080                 
+00C6                  00081 Retardo_20s
+00C6   30C8           00082                 movlw   d'200'
+00C7   28D1           00083                 goto    Retardo_1Decima
+00C8                  00084 Retardo_10s
+00C8   3064           00085                 movlw   d'100'
+00C9   28D1           00086                 goto    Retardo_1Decima
+00CA                  00087 Retardo_5s
+00CA   3032           00088                 movlw   d'50'
+00CB   28D1           00089                 goto    Retardo_1Decima
+00CC                  00090 Retardo_2s
+00CC   3014           00091                 movlw   d'20'
+00CD   28D1           00092                 goto    Retardo_1Decima
+00CE                  00093 Retardo_1s
+00CE   3064           00094                 movlw   d'100'
+00CF   28D1           00095                 goto    Retardo_1Decima
+00D0                  00096 Retardo_500ms
+00D0   3005           00097                 movlw   d'5'
+                      00098 
+00D1                  00099 Retardo_1Decima
+00D1   0093           00100                 movwf   R_ContC
+00D2                  00101 R1Decima_BucleExterno2
+00D2   3064           00102                 movlw   d'100'
+00D3   0092           00103                 movwf   R_ContB
+00D4                  00104 R1Decima_BucleExterno
+00D4   30F9           00105                 movlw   d'249'
+00D5   0091           00106                 movwf   R_ContA
+00D6                  00107 R1Decima_BucleInterno
+00D6   0000           00108                 nop
+00D7   0B91           00109                 decfsz  R_ContA,F
+00D8   28D6           00110                 goto    R1Decima_BucleInterno
+00D9   0B92           00111                 decfsz  R_ContB,F
+00DA   28D4           00112                 goto    R1Decima_BucleExterno
+00DB   0B93           00113                 decfsz  R_ContC,F
+00DC   28D2           00114                 goto    R1Decima_BucleExterno2
+00DD   0008           00115                 return
+                      00036         END
+MPASM  5.51                     LCD_3_84A.ASM   10-4-2021  11:21:16         PAGE  8
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+C                                 00000000
+DC                                00000001
+EEADR                             00000009
+EECON1                            00000088
+EECON2                            00000089
+EEDATA                            00000008
+EEIE                              00000006
+EEIF                              00000004
+F                                 00000001
+FSR                               00000004
+GIE                               00000007
+INDF                              00000000
+INTCON                            0000000B
+INTE                              00000004
+INTEDG                            00000006
+INTF                              00000001
+IRP                               00000007
+Inicio                            00000000
+LCD_2Lineas4Bits5x7               00000051
+LCD_Auxiliar1                     0000000F
+LCD_Auxiliar2                     00000010
+LCD_Borra                         0000004F
+LCD_BusDatos                      PORTB
+LCD_Byte                          00000081
+LCD_ByteCompleto                  00000088
+LCD_Caracter                      00000054
+LCD_CaracteresPorLinea            00000010
+LCD_CodigoCGROM                   0000005E
+LCD_CursorIncr                    0000003F
+LCD_CursorOFF                     0000004D
+LCD_CursorON                      0000004B
+LCD_Dato                          0000000C
+LCD_DosEspaciosBlancos            00000078
+LCD_EnheMayuscula                 00000065
+LCD_EnheMinuscula                 0000005F
+LCD_Envia                         00000056
+LCD_EnviaBlancos                  0000007B
+LCD_EnviaByteLetra                00000094
+LCD_EnviaComando                  00000052
+LCD_EnviaOtroBlanco               0000007C
+LCD_EscribeLCD                    0000002B
+LCD_FinCGROM                      00000072
+LCD_FinVisualizaDigito            00000096
+LCD_Grado                         0000006C
+LCD_GuardaDato                    0000000D
+LCD_GuardaTRISB                   0000000E
+LCD_Inicializa                    00000013
+LCD_Linea1                        00000041
+LCD_Linea2                        00000043
+LCD_LineaEnBlanco                 00000074
+LCD_Nibble                        0000008C
+LCD_OFF                           00000049
+LCD_PinEnable                     PORTA,2
+MPASM  5.51                     LCD_3_84A.ASM   10-4-2021  11:21:16         PAGE  9
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+LCD_PinRS                         PORTA,0
+LCD_PinRW                         PORTA,1
+LCD_PosicionLinea1                00000045
+LCD_PosicionLinea2                00000047
+LCD_TresEspaciosBlancos           0000007A
+LCD_UnEspacioBlanco               00000076
+LCD_VisualizaAlto                 00000089
+LCD_VisualizaBajo                 0000008B
+NOT_PD                            00000003
+NOT_RBPU                          00000007
+NOT_TO                            00000004
+Numero_CeroAlto                   0000000D
+Numero_NoCeroAlto                 0000001D
+OPTION_REG                        00000081
+PCL                               00000002
+PCLATH                            0000000A
+PORTA                             00000005
+PORTB                             00000006
+PS0                               00000000
+PS1                               00000001
+PS2                               00000002
+PSA                               00000003
+Principal                         00000001
+R1Decima_BucleExterno             000000D4
+R1Decima_BucleExterno2            000000D2
+R1Decima_BucleInterno             000000D6
+R1ms_BucleExterno                 000000BE
+R1ms_BucleInterno                 000000C0
+RA0                               00000000
+RA1                               00000001
+RA2                               00000002
+RA3                               00000003
+RA4                               00000004
+RB0                               00000000
+RB1                               00000001
+RB2                               00000002
+RB3                               00000003
+RB4                               00000004
+RB5                               00000005
+RB6                               00000006
+RB7                               00000007
+RBIE                              00000003
+RBIF                              00000000
+RD                                00000000
+RP0                               00000005
+RP1                               00000006
+R_ContA                           00000011
+R_ContB                           00000012
+R_ContC                           00000013
+RetardoMicros                     000000AA
+Retardo_100micros                 000000A4
+Retardo_100ms                     000000B0
+Retardo_10micros                  00000097
+MPASM  5.51                     LCD_3_84A.ASM   10-4-2021  11:21:16         PAGE 10
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+Retardo_10ms                      000000B6
+Retardo_10s                       000000C8
+Retardo_1Decima                   000000D1
+Retardo_1ms                       000000BC
+Retardo_1s                        000000CE
+Retardo_200micros                 000000A1
+Retardo_200ms                     000000AE
+Retardo_20micros                  000000A9
+Retardo_20ms                      000000B4
+Retardo_20s                       000000C6
+Retardo_2ms                       000000BA
+Retardo_2s                        000000CC
+Retardo_4micros                   0000009D
+Retardo_500micros                 0000009E
+Retardo_500ms                     000000D0
+Retardo_50micros                  000000A6
+Retardo_50ms                      000000B2
+Retardo_5micros                   0000009C
+Retardo_5ms                       000000B8
+Retardo_5s                        000000CA
+Retardos_ms                       000000BD
+Rmicros_Bucle                     000000AB
+STATUS                            00000003
+T0CS                              00000005
+T0IE                              00000005
+T0IF                              00000002
+T0SE                              00000004
+TMR0                              00000001
+TMR0IE                            00000005
+TMR0IF                            00000002
+TRISA                             00000085
+TRISA0                            00000000
+TRISA1                            00000001
+TRISA2                            00000002
+TRISA3                            00000003
+TRISA4                            00000004
+TRISB                             00000086
+TRISB0                            00000000
+TRISB1                            00000001
+TRISB2                            00000002
+TRISB3                            00000003
+TRISB4                            00000004
+TRISB5                            00000005
+TRISB6                            00000006
+TRISB7                            00000007
+W                                 00000000
+WR                                00000001
+WREN                              00000002
+WRERR                             00000003
+Z                                 00000002
+_CONFIG                           00002007
+_CP_OFF                           00003FFF
+_CP_ON                            0000000F
+MPASM  5.51                     LCD_3_84A.ASM   10-4-2021  11:21:16         PAGE 11
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_DEVID1                           00002006
+_FOSC_EXTRC                       00003FFF
+_FOSC_HS                          00003FFE
+_FOSC_LP                          00003FFC
+_FOSC_XT                          00003FFD
+_HS_OSC                           00003FFE
+_IDLOC0                           00002000
+_IDLOC1                           00002001
+_IDLOC2                           00002002
+_IDLOC3                           00002003
+_LP_OSC                           00003FFC
+_PWRTE_OFF                        00003FFF
+_PWRTE_ON                         00003FF7
+_RC_OSC                           00003FFF
+_WDTE_OFF                         00003FFB
+_WDTE_ON                          00003FFF
+_WDT_OFF                          00003FFB
+_WDT_ON                           00003FFF
+_XT_OSC                           00003FFD
+__16F84A                          00000001
+
+
+MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
+
+0000 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0040 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0080 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+00C0 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXX-- ---------------- ----------------
+2000 : -------X-------- ---------------- ---------------- ----------------
+
+All other memory blocks unused.
+
+Program Memory Words Used:   222
+Program Memory Words Free:   802
+
+
+Errors   :     0
+Warnings :     3 reported,     0 suppressed
+Messages :     1 reported,     0 suppressed
+
+

@@ -1,12 +1,13 @@
-MPASM  5.51                   INDEXADO_01.ASM   9-15-2021  12:47:44         PAGE  1
+MPASM  5.51                      EMSAM_01.ASM   9-6-2021  13:45:15         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
 2007   3FF1           00001         __CONFIG _CP_OFF&_WDT_OFF&_PWRTE_ON&_XT_OSC
-                      00002                 LIST    P=16F84A
-                      00003                 INCLUDE <P16F84A.INC>
+                      00002          
+                      00003         LIST    p=16F84A
+                      00004         INCLUDE <P16F84A.INC>
                       00001         LIST
                       00002 
                       00003 ;==========================================================================
@@ -16,79 +17,30 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00007 ;==========================================================================
                       00008 
                       00208         LIST
-                      00004                 
-0000                  00005                 ORG     0
-0000                  00006 Inicio
-0000   1683           00007                 bsf     STATUS,RP0
+                      00005          
+  00000055            00006 Constante EQU   b'01010101'
+                      00007 
+                      00008 
+0000                  00009                 ORG 0
+                      00010                 
+0000   1683           00011 Inicio  bsf STATUS,RP0
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-0001   0186           00008                 clrf    TRISB
-0002   301F           00009                 movlw   b'00011111'
-Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-0003   0085           00010                 movwf   TRISA
-0004   1283           00011                 bcf             STATUS,RP0
-0005                  00012 Principal
-0005   0805           00013                 movf    PORTA,W
-0006   3907           00014                 andlw   b'00000111'
-0007   0782           00015                 addwf   PCL,F
-0008                  00016 Tabla
-0008   2810           00017                 goto    Configuracion0
-0009   2812           00018                 goto    Configuracion1
-000A   2814           00019                 goto    Configuracion2
-000B   2816           00020                 goto    Configuracion3
-000C   2818           00021                 goto    Configuracion4
-000D   281A           00022                 goto    Configuracion5
-000E   281C           00023                 goto    Configuracion6
-000F   281E           00024                 goto    Configuracion7
-0010                  00025 Configuracion0  
-0010   300A           00026                 movlw   b'00001010'
-0011   281F           00027                 goto    ActivaSalida
-0012                  00028 Configuracion1  
-0012   3009           00029                 movlw   b'00001001'
-0013   281F           00030                 goto    ActivaSalida
-0014                  00031 Configuracion2  
-0014   3023           00032                 movlw   b'00100011'
-0015   281F           00033                 goto    ActivaSalida
-0016                  00034 Configuracion3  
-0016   300F           00035                 movlw   b'00001111'
-0017   281F           00036                 goto    ActivaSalida
-0018                  00037 Configuracion4  
-0018   3020           00038                 movlw   b'00100000'
-0019   281F           00039                 goto    ActivaSalida
-001A                  00040 Configuracion5  
-001A   3007           00041                 movlw   b'00000111'
-001B   281F           00042                 goto    ActivaSalida
-MPASM  5.51                   INDEXADO_01.ASM   9-15-2021  12:47:44         PAGE  2
-
-
-LOC  OBJECT CODE     LINE SOURCE TEXT
-  VALUE
-
-001C                  00043 Configuracion6  
-001C   3017           00044                 movlw   b'00010111'
-001D   281F           00045                 goto    ActivaSalida
-001E                  00046 Configuracion7  
-001E   303F           00047                 movlw   b'00111111'
-001F                  00048 ActivaSalida
-001F   0086           00049                 movwf   PORTB
-0020   2805           00050                 goto    Principal
-                      00051                 
-                      00052                 END
-MPASM  5.51                   INDEXADO_01.ASM   9-15-2021  12:47:44         PAGE  3
+0001   0186           00012                 CLRF    TRISB
+0002   1283           00013                 bcf STATUS,RP0
+0003   3055           00014                 movlw Constante
+0004                  00015 Principal
+0004   0086           00016                 movwf   PORTB
+0005   2804           00017                 goto    Principal
+                      00018                 
+                      00019         END
+MPASM  5.51                      EMSAM_01.ASM   9-6-2021  13:45:15         PAGE  2
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
-ActivaSalida                      0000001F
 C                                 00000000
-Configuracion0                    00000010
-Configuracion1                    00000012
-Configuracion2                    00000014
-Configuracion3                    00000016
-Configuracion4                    00000018
-Configuracion5                    0000001A
-Configuracion6                    0000001C
-Configuracion7                    0000001E
+Constante                         00000055
 DC                                00000001
 EEADR                             00000009
 EECON1                            00000088
@@ -118,7 +70,7 @@ PS0                               00000000
 PS1                               00000001
 PS2                               00000002
 PSA                               00000003
-Principal                         00000005
+Principal                         00000004
 RA0                               00000000
 RA1                               00000001
 RA2                               00000002
@@ -132,12 +84,6 @@ RB4                               00000004
 RB5                               00000005
 RB6                               00000006
 RB7                               00000007
-MPASM  5.51                   INDEXADO_01.ASM   9-15-2021  12:47:44         PAGE  4
-
-
-SYMBOL TABLE
-  LABEL                             VALUE 
-
 RBIE                              00000003
 RBIF                              00000000
 RD                                00000000
@@ -146,6 +92,12 @@ RP1                               00000006
 STATUS                            00000003
 T0CS                              00000005
 T0IE                              00000005
+MPASM  5.51                      EMSAM_01.ASM   9-6-2021  13:45:15         PAGE  3
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
 T0IF                              00000002
 T0SE                              00000004
 TMR0                              00000001
@@ -166,7 +118,6 @@ TRISB4                            00000004
 TRISB5                            00000005
 TRISB6                            00000006
 TRISB7                            00000007
-Tabla                             00000008
 W                                 00000000
 WR                                00000001
 WREN                              00000002
@@ -191,31 +142,27 @@ _PWRTE_ON                         00003FF7
 _RC_OSC                           00003FFF
 _WDTE_OFF                         00003FFB
 _WDTE_ON                          00003FFF
-MPASM  5.51                   INDEXADO_01.ASM   9-15-2021  12:47:44         PAGE  5
-
-
-SYMBOL TABLE
-  LABEL                             VALUE 
-
 _WDT_OFF                          00003FFB
 _WDT_ON                           00003FFF
 _XT_OSC                           00003FFD
 __16F84A                          00000001
+MPASM  5.51                      EMSAM_01.ASM   9-6-2021  13:45:15         PAGE  4
 
 
 MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
 
-0000 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX X--------------- ----------------
+
+0000 : XXXXXX---------- ---------------- ---------------- ----------------
 2000 : -------X-------- ---------------- ---------------- ----------------
 
 All other memory blocks unused.
 
-Program Memory Words Used:    33
-Program Memory Words Free:   991
+Program Memory Words Used:     6
+Program Memory Words Free:  1018
 
 
 Errors   :     0
 Warnings :     0 reported,     0 suppressed
-Messages :     2 reported,     0 suppressed
+Messages :     1 reported,     0 suppressed
 
 
