@@ -1,0 +1,110 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Arbol (pts 50)
+
+Tomando el arbol genealogico de alguna obra de ficción (agreguen imagen
+del arbol), realice la base de conocimientos e implemente los siguientes 
+predicados, siempre devuelven verdadero o falso
+
+tio(Persona1,Persona2) - S
+primo(Persona1,Persona2) - S
+sobrino(Persona1,Persona2) - S
+abuelo(Persona1,Persona2) - S
+hijo(Persona1,Persona2) - S
+bisnieto(Persona1,Persona2) - S
+
+https://es.wikipedia.org/wiki/Anexo:Nomenclatura_de_parentesco_en_espa%C3%B1ol
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Verbos regulares en pasado Ingles (pts 25)
+
+Algunos verbos  en pasado para ingles terminan en 'ed'
+played, Painted, Asked...
+
+implemente la expresion regular, para revisar si una palabra termina en 
+'ed'
+.+(ed)$
+
+past('played').
+true
+past('got').
+false
+
+. Significa que puede ser cualquier letra o simbolo
+$ que debe terminar con lo previo
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Numero Telefonico. (20 pts)
+
+Escribir la expresion regular e implementar un predicado que valide
+un numero telefonico de 10 digitos en mexico
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Revela el mensaje oculto (Valor 30 pts)
+(Si se me acabo la inspiracion y traje un problema de FP)
+
+Realiza un predicado que permita, conocer un mensaje cifrado por
+reemplazo con base en lo siguiente
+
+	$ = a
+	| = l
+	? = f
+	_ = o
+	) = s
+	( = q
+	3 = e
+	[ = c
+
+mensaje("H_|$",R).
+R = "Hola"
+true
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+(40 pts)
+
+La siguiente base de conocimientos es la estructura de carpetas, de una
+computadora
+
+Los archivos tienen extension
+Las carpetas no tiene extension
+
+tiene('Users','Documents').
+tiene('Users','Downloads').
+tiene('Users','Desktop').
+tiene('Users','Pictures').
+tiene('Users','Videos').
+tiene('Users','Music').
+tiene('Documents','RespuestasExamen.docx').
+tiene('Documents','trampas_fornite.docx').
+tiene('Documents','orden_reinscripcion.pdf').
+tiene('Downloads','Video_youtube.mp4').
+tiene('Downloads','Anime').
+tiene('Anime','Dragon_ball').
+tiene('Anime','Naruto').
+tiene('Naruto','cap1.mp4').
+tiene('Desktop','isos').
+tiene('Desktop','Chrome.lnk').
+tiene('isos','window10.iso').
+
+
+realice un predicado que puede indentificar si un archivo o carpeta esta
+dentro de otra carpeta sin importar el nivel ejemplo:
+
+dentro('Documents','Users').
+true
+% si porque Documents esta en Users
+
+dentro('Video_youtube.mp4','Users').
+true
+% si porque Video_youtube.mp4 esta en Downloads
+% y a su vez Downloads esta en Users
+
+dentro('Downloads','Documents').
+false
+% Es falso por que Downloads no esta en Documents
+
+dentro('Video_youtube.mp4','Documents').
+false
+% Es falso por que Video_youtube.mp4 esta en Downloads
+% y a su vez Downloads no esta en Documents

@@ -1,0 +1,150 @@
+/*1) De los archivos de arbol genealogico, realiza predicados para comprobar*/
+
+mujer(ApollineDelacour).
+mujer(GabrielleDelacour).
+mujer(FleurDelacour).
+mujer(VictoireWeasley).
+mujer(DomniqueWeasley).
+mujer(LunasMum).
+mujer(LunaLovegood).
+mujer(Agusta).
+mujer(Alice).
+mujer(HannahAbbot).
+mujer(Audrey).
+mujer(LucyWeasley).
+mujer(Molly).
+mujer(RosanneWeasley).
+mujer(HermioneJeanGranger).
+mujer(RoseWeasley).
+mujer(LilyEvans).
+mujer(PetuniaEvans).
+mujer(MarioneDursley).
+mujer(GinevraMollyWeasley).
+mujer(LilyLunaPotter).
+mujer(DruellaRosier).
+mujer(NarcissaBlack).
+mujer(AndromedaBlack).
+mujer(BellatrixBlack).
+mujer(NymphadoraTonks).
+mujer(DaphneGrengrass).
+mujer(AstoriaGrengrass).
+mujer(WallurgsBlack).
+mujer(AngelinaJohnson).
+hombre(MonseluirDelacour).
+hombre(CharlieWeasley).
+hombre(BillArthurWeasley).
+hombre(LouisWeasley).
+hombre(XenophiliusLovegood).
+hombre(RolfScamander).
+hombre(LysanderScamander).
+hombre(LorcanScamander).
+hombre(NevilleLongbottom).
+hombre(FrankLonbottom).
+hombre(MrLongbottom).
+hombre(ArthurWeasley).
+hombre(FredWeasley).
+hombre(GeorgeWeasley).
+hombre(PercyIgnatiusWeasley).
+hombre(FredWeasleyII).
+hombre(JamesPotter).
+hombre(VernonDurseley).
+hombre(DudleyDurseley).
+hombre(HarryJamesPotter).
+hombre(RonaldBilliusWeasley).
+hombre(HugoWeasley).
+hombre(JamesSiriusPotter).
+hombre(AlbusSeverusPotter).
+hombre(CyptusBlackIII).
+hombre(TedTonks).
+hombre(RemusLupin).
+hombre(TeddyRemusLupin).
+hombre(RodolphusLestrange).
+hombre(LuciusMalfoy).
+hombre(DracoLuciusMalfoy).
+hombre(ScorpiusHyperionMalfoy).
+hombre(OrionBlack).
+hombre(SiriusBlack).
+hombre(RegulusArcturusBlack).
+
+padres(MonseluirDelacour,ApollineDelacour).
+padres(BillArthurWeasley,FleurDelacour).
+padres(ArthurWeasley,Molly).
+padres(JamesPotter,LilyEvans).
+padres(VernonDurseley,PetuniaEvans).
+padres(HarryJamesPotter,GinevraMollyWeasley).
+padres(RonaldBilliusWeasley,HermioneJeanGranger).
+padres(GeorgeWeasley,AngelinaJohnson).
+padres(PercyIgnatiusWeasley,Audrey).
+padres(OrionBlack,WallurgsBlack).
+padres(LuciusMalfoy,NarcissaBlack).
+padres(DracoLuciusMalfoy,AstoriaGrengrass).
+padres(CyptusBlackIII,DruellaRosier).
+padres(TedTonks,AndromedaBlack).
+padres(RemusLupin,NymphadoraTonks).
+padres(MrLongbottom,Agusta).
+padres(FrankLonbottom,Alice).
+padres(XenophiliusLovegood,LunasMum).
+padres(RolfScamander,LunaLovegood).
+
+pareja(VictoireWeasley,TeddyRemusLupin).
+pareja(RodolphusLestrange,BellatrixBlack).
+pareja(ScorpiusHyperionMalfoy,RoseWeasley).
+pareja(NevilleLongbottom,HannahAbbot).
+
+hijo(A,B) :- padres(B,A), sexo(B,masculino).
+hija(A,B) :- padres(B,A), sexo(B,femenino).
+
+hermanos(A,B) :- padres(Z,A),padres(Z,B), not(A==B).
+
+
+madre(A,B) :- descendiente(A,B) ,sexo(B,femenino).
+padre(A,B) :- descendiente(A,B) ,sexo(B,masculino).
+
+abuela(A,B) :-
+	A \== B,
+	sexo(B, femenino),
+	madre(A,Z), madre(Z,B),
+	madre(A,Z), padre(B,Y).
+
+abuelo(A,B) :-
+	A \== B,
+	sexo(B, masculino),
+	padre(A,Z), padre(Z,B),
+	madre(A,Z), padre(B,Y).
+
+tia(A,B) :- madre(A,Z) ,hermana(Z,B).
+tia(A,B) :- padre(A,Z) ,hermana(Z,B).
+tia(A,B) :- madre(A,Z) ,hermano(Z,B) ,pareja(W,B).
+tia(A,B) :- padre(A,Z) ,hermano(Z,B) ,pareja(W,B).
+
+tio(A,B) :- madre(A,Z) ,hermano(Z,B).
+tio(A,B) :- padre(A,Z) ,hermano(Z,B).
+tio(A,B) :- madre(A,Z) ,hermana(Z,B) ,pareja(W,B).
+tio(A,B) :- padre(A,Z) ,hermana(Z,B) ,pareja(W,B).
+
+sobrino(A,B) :- padres(Z,A),hermanos(Z,B).
+sobrino(A,B) :- padres(Z,A),cuniado(B,Z).
+primo(A,B) :- padres(Z,A),padres(W,B),hermanos(Z,W).
+
+
+nieta(A,B) :-
+	A \== b,
+	sexo(B,femenino),
+	descendiente(A,Z) ,descendiente(Z,B).
+
+nieto(A,B) :-
+	A \== b,
+	sexo(B,masculino),
+	descendiente(A,Z) ,descendiente(Z,B).
+
+cuniado(A,B) :- pareja(A,Z),hermanos(Z,B).
+
+bisnieto(A,B) :- abuelos(A,Z),padres(Z,A).
+
+
+
+
+
+
+
+

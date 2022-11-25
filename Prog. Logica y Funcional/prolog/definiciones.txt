@@ -1,0 +1,23 @@
+2) Defina los siguientes conceptos: (30 pts)
+ 
+-HECHO
+"Son cosas que ya pasaron o están pasando, y no se pueden cambiar"
+Sentencias que son inmutables, una vez declaradas no pueden cambiar su valor. Dicho valor puede ser una negación o una afirmación
+
+Ejemplo: "No hay papel"
+
+
+-REGLA
+Son inferencias obtenidas a partir de los hechos u otras reglas
+"Es el conocimiento que se obtiene a partir de los hechos"
+
+Ejemplo:
+P= Estaba fuera de casa
+Q= Hoy llovió
+M= Estoy empapado
+P ^ Q -> M (Si P y Q se cumplen, entonces resulta M)
+
+
+-BASE DE CONOCIMIENTOS
+Se cataloga como una base de datos, pues comparten elementos. Hay algunos detalles por los cuales se las diferencian
+"Una base de datos es una coleccion de datos interrelacionados"
