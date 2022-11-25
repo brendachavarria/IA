@@ -1,0 +1,967 @@
+MPASM  5.51                 EEPROM_01 628.ASM   10-11-2021  11:54:34         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+2007   3F51           00001         __CONFIG _CP_OFF&_WDT_OFF&_PWRTE_ON&_LVP_OFF&_MCLRE_OFF&_INTOSC_OSC_CLKOUT
+                      00002         LIST    P=16F628A
+                      00003         INCLUDE <P16F628A.INC>
+                      00001         LIST
+                      00002 
+                      00003 ;==========================================================================
+                      00004 ;  MPASM PIC16F628A processor include
+                      00005 ; 
+                      00006 ;  (c) Copyright 1999-2013 Microchip Technology, All rights reserved
+                      00007 ;==========================================================================
+                      00008 
+                      00385         LIST
+                      00004 
+                      00005         CBLOCK 0x20
+  00000020            00006         Contador
+                      00007         ENDC            
+                      00008 
+2100                  00009         ORG     0x2100                  
+                      00010                                         
+2100   0000           00011         DE      0x00            
+                      00012 
+0000                  00013         ORG     0               
+0000                  00014 Inicio
+0000   2046           00015         call    LCD_Inicializa
+0001   0103           00016         clrw                    
+0002   20CA           00017         call    EEPROM_LeeDato
+0003   00A0           00018         movwf   Contador        
+0004   212E           00019         call    BIN_a_BCD       
+0005   20B4           00020         call    LCD_Byte        
+0006   300E           00021         movlw   MensajeReseteado
+0007   201E           00022         call    LCD_Mensaje
+0008   0AA0           00023         incf    Contador,F      
+0009   0820           00024         movf    Contador,W      
+000A   20D3           00025         call    EEPROM_EscribeDato
+000B                  00026 Principal
+000B   0063           00027         sleep                           
+000C   280B           00028         goto    Principal
+                      00029 
+000D                  00030 Mensajes
+000D   0782           00031         addwf   PCL,F   
+000E                  00032 MensajeReseteado
+000E   3420 3472 3465 00033         DT " reseteados.   ", 0x00
+       3473 3465 3474 
+       3465 3461 3464 
+       346F 3473 342E 
+       3420 3420 3420 
+       3400 
+001E                  00034 FinMensajes
+                      00035     INCLUDE   <LCD_MENS.INC>;;
+Warning[205]: Found directive in column 1. (CBLOCK)
+                      00001 CBLOCK
+  00000021            00002         LCD_ApuntaCaracter              
+                      00003                                         
+MPASM  5.51                 EEPROM_01 628.ASM   10-11-2021  11:54:34         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+  00000022            00004         LCD_ValorCaracter
+                      00005         ENDC                    
+                      00006 
+001E                  00007 LCD_Mensaje
+001E   00A1           00008         movwf   LCD_ApuntaCaracter      
+001F   300D           00009         movlw   Mensajes                        
+0020   02A1           00010         subwf   LCD_ApuntaCaracter,F
+0021   03A1           00011         decf    LCD_ApuntaCaracter,F 
+0022                  00012 LCD_VisualizaOtroCaracter
+0022   0821           00013         movf    LCD_ApuntaCaracter,W
+0023   200D           00014         call    Mensajes                        
+0024   00A2           00015         movwf   LCD_ValorCaracter       
+0025   08A2           00016         movf    LCD_ValorCaracter,F     
+0026   1903           00017         btfsc   STATUS,Z                
+0027   282B           00018         goto    LCD_FinMensaje  
+0028                  00019 LCD_NoUltimoCaracter
+0028   2087           00020         call    LCD_Caracter    
+0029   0AA1           00021         incf    LCD_ApuntaCaracter,F    
+002A   2822           00022         goto    LCD_VisualizaOtroCaracter       
+002B                  00023 LCD_FinMensaje
+002B   0008           00024         return 
+                      00025 
+                      00026         CBLOCK  
+  00000023            00027         LCD_CursorPosicion      
+                      00028         ENDC                            
+                      00029 
+002C                  00030 LCD_MensajeMovimiento
+002C   00A1           00031         movwf   LCD_ApuntaCaracter      
+002D   300D           00032         movlw   Mensajes                        
+002E   02A1           00033         subwf   LCD_ApuntaCaracter,F    
+002F   03A1           00034         decf    LCD_ApuntaCaracter,F    
+0030                  00035 LCD_PrimeraPosicion
+0030   01A3           00036         clrf    LCD_CursorPosicion      
+0031   2082           00037         call    LCD_Borra               
+0032                  00038 LCD_VisualizaCaracter           
+0032   3010           00039         movlw   LCD_CaracteresPorLinea  
+0033   0223           00040         subwf   LCD_CursorPosicion,W
+0034   1D03           00041         btfss   STATUS,Z
+0035   283B           00042         goto    LCD_NoEsFinalLinea
+0036                  00043 LCD_EsFinalLinea
+0036   20FE           00044         call    Retardo_200ms           
+0037   20FE           00045         call    Retardo_200ms
+0038   300F           00046         movlw   LCD_CaracteresPorLinea-1
+0039   02A1           00047         subwf   LCD_ApuntaCaracter,F    
+003A   2830           00048         goto    LCD_PrimeraPosicion      
+003B                  00049 LCD_NoEsFinalLinea                      
+003B   0821           00050         movf    LCD_ApuntaCaracter,W
+003C   200D           00051         call    Mensajes                
+003D   00A2           00052         movwf   LCD_ValorCaracter       
+003E   08A2           00053         movf    LCD_ValorCaracter,F     
+003F   1903           00054         btfsc   STATUS,Z                
+0040   2845           00055         goto    LCD_FinMovimiento       
+0041                  00056 LCD_NoUltimoCaracter2
+MPASM  5.51                 EEPROM_01 628.ASM   10-11-2021  11:54:34         PAGE  3
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0041   2087           00057         call    LCD_Caracter            
+0042   0AA3           00058         incf    LCD_CursorPosicion,F 
+                      00059                                         
+0043   0AA1           00060         incf    LCD_ApuntaCaracter,F    
+0044   2832           00061         goto    LCD_VisualizaCaracter   
+0045                  00062 LCD_FinMovimiento                       
+0045   0008           00063         return                          
+                      00036     INCLUDE   <LCD_4BIT.INC>;;
+                      00001 
+Warning[205]: Found directive in column 1. (CBLOCK)
+                      00002 CBLOCK
+  00000024            00003         LCD_Dato
+  00000025            00004         LCD_GuardaDato
+  00000026            00005         LCD_GuardaTRISB
+  00000027            00006         LCD_Auxiliar1
+  00000028            00007         LCD_Auxiliar2
+                      00008         ENDC
+                      00009 
+  00000010            00010 LCD_CaracteresPorLinea  EQU     .16
+                      00011 
+                      00012 #DEFINE  LCD_PinRS      PORTA,0
+                      00013 #DEFINE  LCD_PinRW      PORTA,1
+                      00014 #DEFINE  LCD_PinEnable  PORTA,2
+                      00015 #DEFINE  LCD_BusDatos   PORTB
+                      00016 
+0046                  00017 LCD_Inicializa
+0046   1683           00018         bsf     STATUS,RP0              
+0047   1005           00019         bcf     LCD_PinRS               
+0048   1105           00020         bcf     LCD_PinEnable
+0049   1085           00021         bcf     LCD_PinRW
+004A   1283           00022         bcf     STATUS,RP0
+004B   1085           00023         bcf     LCD_PinRW               
+004C   1105           00024         bcf     LCD_PinEnable   
+004D   1005           00025         bcf     LCD_PinRS       
+004E   2104           00026         call    Retardo_20ms
+004F   3030           00027         movlw   b'00110000'     
+0050   205E           00028         call    LCD_EscribeLCD  
+0051   2108           00029         call    Retardo_5ms     
+0052   3030           00030         movlw   b'00110000'     
+0053   205E           00031         call    LCD_EscribeLCD
+0054   20F1           00032         call    Retardo_200micros
+0055   3030           00033         movlw   b'00110000'     
+0056   205E           00034         call    LCD_EscribeLCD
+0057   3020           00035         movlw   b'00100000'             
+0058   205E           00036         call    LCD_EscribeLCD
+0059   2084           00037         call    LCD_2Lineas4Bits5x7     
+005A   2082           00038         call    LCD_Borra               
+005B   2080           00039         call    LCD_CursorOFF   
+005C   2072           00040         call    LCD_CursorIncr  
+005D   0008           00041         return
+                      00042         
+005E                  00043 LCD_EscribeLCD
+005E   39F0           00044         andlw   b'11110000'             
+MPASM  5.51                 EEPROM_01 628.ASM   10-11-2021  11:54:34         PAGE  4
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+005F   00A4           00045         movwf   LCD_Dato                
+0060   0806           00046         movf    LCD_BusDatos,W  
+0061   390F           00047         andlw   b'00001111'             
+0062   04A4           00048         iorwf   LCD_Dato,F      
+0063   1683           00049         bsf     STATUS,RP0              
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0064   0806           00050         movf    TRISB,W         
+0065   00A6           00051         movwf   LCD_GuardaTRISB
+0066   300F           00052         movlw   b'00001111'      
+0067   0586           00053         andwf   PORTB,F         
+0068   1283           00054         bcf     STATUS,RP0              
+                      00055         
+0069   0824           00056         movf    LCD_Dato,W      
+006A   0086           00057         movwf   LCD_BusDatos
+006B   1505           00058         bsf     LCD_PinEnable   
+006C   1105           00059         bcf     LCD_PinEnable   
+006D   1683           00060         bsf     STATUS,RP0              
+006E   0826           00061         movf    LCD_GuardaTRISB,W       
+006F   0086           00062         movwf   PORTB           
+0070   1283           00063         bcf     STATUS,RP0              
+0071   0008           00064         return
+                      00065 ; Subrutinas variadas para el control del módulo LCD ---
+                      00066 
+0072                  00067 LCD_CursorIncr                  
+0072   3006           00068         movlw   b'00000110'
+0073   2885           00069         goto    LCD_EnviaComando
+0074                  00070 LCD_Linea1                              
+0074   3080           00071         movlw   b'10000000'     
+0075   2885           00072         goto    LCD_EnviaComando
+0076                  00073 LCD_Linea2                              
+0076   30C0           00074         movlw   b'11000000'     
+0077   2885           00075         goto    LCD_EnviaComando
+0078                  00076 LCD_PosicionLinea1              
+0078   3880           00077         iorlw   b'10000000'     
+0079   2885           00078         goto    LCD_EnviaComando        
+007A                  00079 LCD_PosicionLinea2                      
+007A   38C0           00080         iorlw   b'11000000'             
+007B   2885           00081         goto    LCD_EnviaComando
+007C                  00082 LCD_OFF                         
+007C   3008           00083         movlw   b'00001000'
+007D   2885           00084         goto    LCD_EnviaComando
+007E                  00085 LCD_CursorON                            
+007E   300E           00086         movlw   b'00001110'
+007F   2885           00087         goto    LCD_EnviaComando
+0080                  00088 LCD_CursorOFF                           
+0080   300C           00089         movlw   b'00001100'
+0081   2885           00090         goto    LCD_EnviaComando
+0082                  00091 LCD_Borra                                
+0082   3001           00092         movlw   b'00000001'     
+0083   2885           00093         goto    LCD_EnviaComando
+0084                  00094 LCD_2Lineas4Bits5x7             
+0084   3028           00095         movlw   b'00101000'     
+                      00096 ;       goto    LCD_EnviaComando
+MPASM  5.51                 EEPROM_01 628.ASM   10-11-2021  11:54:34         PAGE  5
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00097         
+                      00098 ; Subrutinas "LCD_EnviaComando" y "LCD_Caracter" --
+0085                  00099 LCD_EnviaComando
+0085   1005           00100         bcf     LCD_PinRS               
+0086   2889           00101         goto    LCD_Envia
+0087                  00102 LCD_Caracter
+0087   1405           00103         bsf     LCD_PinRS               
+0088   2091           00104         call    LCD_CodigoCGROM
+0089                  00105 LCD_Envia
+0089   00A5           00106         movwf   LCD_GuardaDato          
+008A   205E           00107         call    LCD_EscribeLCD          
+008B   0E25           00108         swapf   LCD_GuardaDato,W                                        
+008C   205E           00109         call    LCD_EscribeLCD  
+008D   1C05           00110         btfss   LCD_PinRS                
+008E   210A           00111         call    Retardo_2ms             
+008F   20F6           00112         call    Retardo_50micros
+0090   0008           00113         return  
+                      00114         
+0091                  00115 LCD_CodigoCGROM
+0091   00A4           00116         movwf   LCD_Dato                
+0092                  00117 LCD_EnheMinuscula                       
+0092   3CF1           00118         sublw   'ñ'             
+0093   1D03           00119         btfss   STATUS,Z
+0094   2898           00120         goto    LCD_EnheMayuscula
+0095   30EE           00121         movlw   b'11101110'             
+0096   00A4           00122         movwf   LCD_Dato
+0097   28A5           00123         goto    LCD_FinCGROM
+0098                  00124 LCD_EnheMayuscula
+0098   0824           00125         movf    LCD_Dato,W              
+0099   3CD1           00126         sublw   'Ñ'                     
+009A   1D03           00127         btfss   STATUS,Z
+009B   289F           00128         goto    LCD_Grado               
+009C   30EE           00129         movlw   b'11101110'     
+009D   00A4           00130         movwf   LCD_Dato                
+009E   28A5           00131         goto    LCD_FinCGROM    
+009F                  00132 LCD_Grado
+009F   0824           00133         movf    LCD_Dato,W              
+00A0   3CBA           00134         sublw   'º'                     
+00A1   1D03           00135         btfss   STATUS,Z
+00A2   28A5           00136         goto    LCD_FinCGROM    
+00A3   30DF           00137         movlw   b'11011111'     
+00A4   00A4           00138         movwf   LCD_Dato
+00A5                  00139 LCD_FinCGROM
+00A5   0824           00140         movf    LCD_Dato,W      
+00A6   0008           00141         return
+                      00142         
+00A7                  00143 LCD_LineaEnBlanco
+00A7   3010           00144         movlw   LCD_CaracteresPorLinea
+00A8   28AE           00145         goto    LCD_EnviaBlancos
+00A9                  00146 LCD_UnEspacioBlanco
+00A9   3001           00147         movlw   .1
+00AA   28AE           00148         goto    LCD_EnviaBlancos
+00AB                  00149 LCD_DosEspaciosBlancos
+MPASM  5.51                 EEPROM_01 628.ASM   10-11-2021  11:54:34         PAGE  6
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+00AB   3002           00150         movlw   .2
+00AC   28AE           00151         goto    LCD_EnviaBlancos
+00AD                  00152 LCD_TresEspaciosBlancos
+00AD   3003           00153         movlw   .3
+00AE                  00154 LCD_EnviaBlancos
+00AE   00A7           00155         movwf   LCD_Auxiliar1   
+00AF                  00156 LCD_EnviaOtroBlanco     
+00AF   3020           00157         movlw   ' '                     
+00B0   2087           00158         call    LCD_Caracter            
+00B1   0BA7           00159         decfsz  LCD_Auxiliar1,F         
+00B2   28AF           00160         goto    LCD_EnviaOtroBlanco
+00B3   0008           00161         return
+                      00162         
+00B4                  00163 LCD_Byte
+00B4   00A8           00164         movwf   LCD_Auxiliar2           
+00B5   39F0           00165         andlw   b'11110000'             
+00B6   1D03           00166         btfss   STATUS,Z                
+00B7   28BC           00167         goto    LCD_VisualizaAlto               
+00B8   3020           00168         movlw   ' '                     
+00B9   2087           00169         call    LCD_Caracter
+00BA   28BE           00170         goto    LCD_VisualizaBajo
+                      00171 
+00BB                  00172 LCD_ByteCompleto
+00BB   00A8           00173         movwf   LCD_Auxiliar2           
+00BC                  00174 LCD_VisualizaAlto
+00BC   0E28           00175         swapf   LCD_Auxiliar2,W 
+00BD   20BF           00176         call    LCD_Nibble      
+00BE                  00177 LCD_VisualizaBajo
+00BE   0828           00178         movf    LCD_Auxiliar2,W          
+                      00179 ;       call    LCD_Nibble              
+                      00180 ;       return
+00BF                  00181 LCD_Nibble
+00BF   390F           00182         andlw   b'00001111'             
+00C0   00A7           00183         movwf   LCD_Auxiliar1   
+00C1   3C09           00184         sublw   0x09            
+00C2   1C03           00185         btfss   STATUS,C        
+00C3   28C7           00186         goto    LCD_EnviaByteLetra
+00C4   0827           00187         movf    LCD_Auxiliar1,W
+00C5   3E30           00188         addlw   '0'             
+00C6   28C9           00189         goto    LCD_FinVisualizaDigito  
+00C7                  00190 LCD_EnviaByteLetra
+00C7   0827           00191         movf    LCD_Auxiliar1,W
+00C8   3E37           00192         addlw   'A'-0x0A                         
+00C9                  00193 LCD_FinVisualizaDigito
+00C9   2887           00194         goto    LCD_Caracter    
+                      00195                                 
+                      00037         INCLUDE   <EEPROM.INC>;         ;         
+00CA                  00001 EEPROM_LeeDato
+00CA   1283           00002         bcf     STATUS,RP0              
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00CB   009B           00003         movwf   EEADR           
+00CC   1683           00004         bsf     STATUS,RP0              
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+MPASM  5.51                 EEPROM_01 628.ASM   10-11-2021  11:54:34         PAGE  7
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+00CD   141C           00005         bsf     EECON1,RD               
+00CE                  00006 EEPROM_SigueLeyendo
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00CE   181C           00007         btfsc   EECON1,RD       
+00CF   28CE           00008         goto    EEPROM_SigueLeyendo     
+00D0   1283           00009         bcf     STATUS,RP0              
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00D1   081A           00010         movf    EEDATA,W        
+00D2   0008           00011         return
+                      00012 
+                      00013         CBLOCK
+  00000029            00014         EEPROM_GuardaINTCON
+                      00015         ENDC
+                      00016 
+00D3                  00017 EEPROM_EscribeDato
+00D3   1283           00018         bcf     STATUS,RP0              
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00D4   009A           00019         movwf   EEDATA          
+00D5   080B           00020         movf    INTCON,W        
+00D6   00A9           00021         movwf   EEPROM_GuardaINTCON
+00D7   1683           00022         bsf     STATUS,RP0              
+00D8   138B           00023         bcf     INTCON,GIE              
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00D9   151C           00024         bsf     EECON1,WREN             
+                      00025 
+00DA   3055           00026         movlw   0x55
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00DB   009D           00027         movwf   EECON2
+00DC   30AA           00028         movlw   0xAA
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00DD   009D           00029         movwf   EECON2
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00DE   149C           00030         bsf     EECON1,WR               
+00DF                  00031 EEPROM_TerminaEscribir
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00DF   189C           00032         btfsc   EECON1,WR       
+00E0   28DF           00033         goto    EEPROM_TerminaEscribir
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00E1   111C           00034         bcf     EECON1,WREN             
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+00E2   139C           00035         bcf     EECON1,EEIF             
+00E3   1283           00036         bcf     STATUS,RP0              
+00E4   0829           00037         movf    EEPROM_GuardaINTCON,W 
+00E5   008B           00038         movwf   INTCON
+00E6   0008           00039         return
+                      00038         INCLUDE   <RETARDOS.INC>;       ;       
+Warning[205]: Found directive in column 1. (CBLOCK)
+                      00001 CBLOCK
+  0000002A            00002 R_ContA
+  0000002B            00003 R_ContB
+  0000002C            00004 R_ContC
+Warning[205]: Found directive in column 1. (ENDC)
+                      00005 ENDC
+MPASM  5.51                 EEPROM_01 628.ASM   10-11-2021  11:54:34         PAGE  8
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00006 
+00E7                  00007 Retardo_10micros
+00E7   0000           00008         nop             
+00E8   0000           00009         nop
+00E9   0000           00010         nop
+00EA   0000           00011         nop
+00EB   0000           00012         nop
+00EC                  00013 Retardo_5micros
+00EC   0000           00014         nop
+00ED                  00015 Retardo_4micros
+00ED   0008           00016         return
+                      00017         
+00EE                  00018 Retardo_500micros
+00EE   0000           00019         nop
+00EF   30A4           00020         movlw   d'164'
+00F0   28FA           00021         goto    RetardoMicros
+00F1                  00022 Retardo_200micros
+00F1   0000           00023         nop
+00F2   3040           00024         movlw   d'64'
+00F3   28FA           00025         goto    RetardoMicros
+00F4                  00026 Retardo_100micros
+00F4   301F           00027         movlw   d'31'
+00F5   28FA           00028         goto    RetardoMicros
+00F6                  00029 Retardo_50micros
+00F6   0000           00030         nop
+00F7   300E           00031         movlw   d'14'
+00F8   28FA           00032         goto    RetardoMicros
+00F9                  00033 Retardo_20micros
+00F9   3005           00034         movlw   d'5'
+                      00035         
+                      00036 
+00FA                  00037 RetardoMicros   
+00FA   00AA           00038         movwf   R_ContA
+00FB                  00039 Rmicros_Bucle
+00FB   0BAA           00040         decfsz  R_ContA,F
+00FC   28FB           00041         goto    Rmicros_Bucle
+00FD   0008           00042         return
+                      00043 
+00FE                  00044 Retardo_200ms
+00FE   30C8           00045         movlw   d'200'
+00FF   290D           00046         goto    Retardos_ms
+0100                  00047 Retardo_100ms
+0100   3064           00048         movlw   d'100'
+0101   290D           00049         goto    Retardos_ms
+0102                  00050 Retardo_50ms
+0102   3032           00051         movlw   d'50'
+0103   290D           00052         goto    Retardos_ms
+0104                  00053 Retardo_20ms
+0104   3014           00054         movlw   d'20'
+0105   290D           00055         goto    Retardos_ms
+0106                  00056 Retardo_10ms
+0106   300A           00057         movlw   d'10'
+0107   290D           00058         goto    Retardos_ms
+MPASM  5.51                 EEPROM_01 628.ASM   10-11-2021  11:54:34         PAGE  9
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0108                  00059 Retardo_5ms
+0108   3005           00060         movlw   d'5'
+0109   290D           00061         goto    Retardos_ms
+010A                  00062 Retardo_2ms
+010A   3002           00063         movlw   d'2'
+010B   290D           00064         goto    Retardos_ms
+010C                  00065 Retardo_1ms
+010C   3001           00066         movlw   d'1'
+                      00067         
+010D                  00068 Retardos_ms
+010D   00AB           00069                 movwf   R_ContB
+010E                  00070 R1ms_BucleExterno
+010E   30F9           00071                 movlw   d'249'
+010F   00AA           00072                 movwf   R_ContA
+0110                  00073 R1ms_BucleInterno
+0110   0000           00074                 nop
+0111   0BAA           00075                 decfsz  R_ContA,F
+0112   2910           00076                 goto    R1ms_BucleInterno
+0113   0BAB           00077                 decfsz  R_ContB,F
+0114   290E           00078                 goto    R1ms_BucleExterno
+0115   0008           00079                 return
+                      00080                 
+0116                  00081 Retardo_20s
+0116   30C8           00082                 movlw   d'200'
+0117   2921           00083                 goto    Retardo_1Decima
+0118                  00084 Retardo_10s
+0118   3064           00085                 movlw   d'100'
+0119   2921           00086                 goto    Retardo_1Decima
+011A                  00087 Retardo_5s
+011A   3032           00088                 movlw   d'50'
+011B   2921           00089                 goto    Retardo_1Decima
+011C                  00090 Retardo_2s
+011C   3014           00091                 movlw   d'20'
+011D   2921           00092                 goto    Retardo_1Decima
+011E                  00093 Retardo_1s
+011E   3064           00094                 movlw   d'100'
+011F   2921           00095                 goto    Retardo_1Decima
+0120                  00096 Retardo_500ms
+0120   3005           00097                 movlw   d'5'
+                      00098 
+0121                  00099 Retardo_1Decima
+0121   00AC           00100                 movwf   R_ContC
+0122                  00101 R1Decima_BucleExterno2
+0122   3064           00102                 movlw   d'100'
+0123   00AB           00103                 movwf   R_ContB
+0124                  00104 R1Decima_BucleExterno
+0124   30F9           00105                 movlw   d'249'
+0125   00AA           00106                 movwf   R_ContA
+0126                  00107 R1Decima_BucleInterno
+0126   0000           00108                 nop
+0127   0BAA           00109                 decfsz  R_ContA,F
+0128   2926           00110                 goto    R1Decima_BucleInterno
+0129   0BAB           00111                 decfsz  R_ContB,F
+MPASM  5.51                 EEPROM_01 628.ASM   10-11-2021  11:54:34         PAGE 10
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+012A   2924           00112                 goto    R1Decima_BucleExterno
+012B   0BAC           00113                 decfsz  R_ContC,F
+012C   2922           00114                 goto    R1Decima_BucleExterno2
+012D   0008           00115                 return
+                      00039         INCLUDE   <BIN_BCD.INC>
+                      00001         CBLOCK
+  0000002D            00002         Centenas
+  0000002E            00003         Decenas
+  0000002F            00004         Unidades
+                      00005         ENDC
+                      00006         
+012E                  00007 BIN_a_BCD
+012E   01AD           00008         clrf    Centenas
+012F   01AE           00009         clrf    Decenas
+0130   00AF           00010         movwf   Unidades
+0131                  00011 Resta10
+0131   300A           00012         movlw   .10
+0132   022F           00013         subwf   Unidades,W
+0133   1C03           00014         btfss   STATUS,C
+0134   293E           00015         goto    Fin_BIN_BCD
+0135                  00016 IncrementaDecenas
+0135   00AF           00017         movwf   Unidades
+0136   0AAE           00018         incf    Decenas,F
+0137   300A           00019         movlw   .10
+0138   022E           00020         subwf   Decenas,W
+0139   1C03           00021         btfss   STATUS,C
+013A   2931           00022         goto    Resta10
+013B                  00023 IncrementaCentenas
+013B   01AE           00024         clrf    Decenas
+013C   0AAD           00025         incf    Centenas,F
+013D   2931           00026         goto    Resta10
+013E                  00027 Fin_BIN_BCD
+013E   0E2E           00028         swapf   Decenas,W
+013F   072F           00029         addwf   Unidades,W
+0140   0008           00030         return
+                      00031                 
+                      00032                 END
+MPASM  5.51                 EEPROM_01 628.ASM   10-11-2021  11:54:34         PAGE 11
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+ADDEN                             00000003
+ADEN                              00000003
+BIN_a_BCD                         0000012E
+BRGH                              00000002
+C                                 00000000
+C1INV                             00000004
+C1OUT                             00000006
+C2INV                             00000005
+C2OUT                             00000007
+CCP1CON                           00000017
+CCP1IE                            00000002
+CCP1IF                            00000002
+CCP1M0                            00000000
+CCP1M1                            00000001
+CCP1M2                            00000002
+CCP1M3                            00000003
+CCP1X                             00000005
+CCP1Y                             00000004
+CCPR1                             00000015
+CCPR1H                            00000016
+CCPR1L                            00000015
+CIS                               00000003
+CM0                               00000000
+CM1                               00000001
+CM2                               00000002
+CMCON                             0000001F
+CMIE                              00000006
+CMIF                              00000006
+CREN                              00000004
+CSRC                              00000007
+Centenas                          0000002D
+Contador                          00000020
+DATA_CP_OFF                       00003FFF
+DATA_CP_ON                        00003EFF
+DC                                00000001
+Decenas                           0000002E
+EEADR                             0000009B
+EECON1                            0000009C
+EECON2                            0000009D
+EEDATA                            0000009A
+EEIE                              00000007
+EEIF                              00000007
+EEPROM_EscribeDato                000000D3
+EEPROM_GuardaINTCON               00000029
+EEPROM_LeeDato                    000000CA
+EEPROM_SigueLeyendo               000000CE
+EEPROM_TerminaEscribir            000000DF
+F                                 00000001
+FERR                              00000002
+FSR                               00000004
+FinMensajes                       0000001E
+Fin_BIN_BCD                       0000013E
+GIE                               00000007
+MPASM  5.51                 EEPROM_01 628.ASM   10-11-2021  11:54:34         PAGE 12
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+INDF                              00000000
+INTCON                            0000000B
+INTE                              00000004
+INTEDG                            00000006
+INTF                              00000001
+IRP                               00000007
+IncrementaCentenas                0000013B
+IncrementaDecenas                 00000135
+Inicio                            00000000
+LCD_2Lineas4Bits5x7               00000084
+LCD_ApuntaCaracter                00000021
+LCD_Auxiliar1                     00000027
+LCD_Auxiliar2                     00000028
+LCD_Borra                         00000082
+LCD_BusDatos                      PORTB
+LCD_Byte                          000000B4
+LCD_ByteCompleto                  000000BB
+LCD_Caracter                      00000087
+LCD_CaracteresPorLinea            00000010
+LCD_CodigoCGROM                   00000091
+LCD_CursorIncr                    00000072
+LCD_CursorOFF                     00000080
+LCD_CursorON                      0000007E
+LCD_CursorPosicion                00000023
+LCD_Dato                          00000024
+LCD_DosEspaciosBlancos            000000AB
+LCD_EnheMayuscula                 00000098
+LCD_EnheMinuscula                 00000092
+LCD_Envia                         00000089
+LCD_EnviaBlancos                  000000AE
+LCD_EnviaByteLetra                000000C7
+LCD_EnviaComando                  00000085
+LCD_EnviaOtroBlanco               000000AF
+LCD_EsFinalLinea                  00000036
+LCD_EscribeLCD                    0000005E
+LCD_FinCGROM                      000000A5
+LCD_FinMensaje                    0000002B
+LCD_FinMovimiento                 00000045
+LCD_FinVisualizaDigito            000000C9
+LCD_Grado                         0000009F
+LCD_GuardaDato                    00000025
+LCD_GuardaTRISB                   00000026
+LCD_Inicializa                    00000046
+LCD_Linea1                        00000074
+LCD_Linea2                        00000076
+LCD_LineaEnBlanco                 000000A7
+LCD_Mensaje                       0000001E
+LCD_MensajeMovimiento             0000002C
+LCD_Nibble                        000000BF
+LCD_NoEsFinalLinea                0000003B
+LCD_NoUltimoCaracter              00000028
+LCD_NoUltimoCaracter2             00000041
+LCD_OFF                           0000007C
+MPASM  5.51                 EEPROM_01 628.ASM   10-11-2021  11:54:34         PAGE 13
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+LCD_PinEnable                     PORTA,2
+LCD_PinRS                         PORTA,0
+LCD_PinRW                         PORTA,1
+LCD_PosicionLinea1                00000078
+LCD_PosicionLinea2                0000007A
+LCD_PrimeraPosicion               00000030
+LCD_TresEspaciosBlancos           000000AD
+LCD_UnEspacioBlanco               000000A9
+LCD_ValorCaracter                 00000022
+LCD_VisualizaAlto                 000000BC
+LCD_VisualizaBajo                 000000BE
+LCD_VisualizaCaracter             00000032
+LCD_VisualizaOtroCaracter         00000022
+MensajeReseteado                  0000000E
+Mensajes                          0000000D
+NOT_BO                            00000000
+NOT_BOD                           00000000
+NOT_BOR                           00000000
+NOT_PD                            00000003
+NOT_POR                           00000001
+NOT_RBPU                          00000007
+NOT_T1SYNC                        00000002
+NOT_TO                            00000004
+OERR                              00000001
+OPTION_REG                        00000081
+OSCF                              00000003
+PCL                               00000002
+PCLATH                            0000000A
+PCON                              0000008E
+PEIE                              00000006
+PIE1                              0000008C
+PIR1                              0000000C
+PORTA                             00000005
+PORTB                             00000006
+PR2                               00000092
+PS0                               00000000
+PS1                               00000001
+PS2                               00000002
+PSA                               00000003
+Principal                         0000000B
+R1Decima_BucleExterno             00000124
+R1Decima_BucleExterno2            00000122
+R1Decima_BucleInterno             00000126
+R1ms_BucleExterno                 0000010E
+R1ms_BucleInterno                 00000110
+RA0                               00000000
+RA1                               00000001
+RA2                               00000002
+RA3                               00000003
+RA4                               00000004
+RA5                               00000005
+RA6                               00000006
+RA7                               00000007
+MPASM  5.51                 EEPROM_01 628.ASM   10-11-2021  11:54:34         PAGE 14
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+RB0                               00000000
+RB1                               00000001
+RB2                               00000002
+RB3                               00000003
+RB4                               00000004
+RB5                               00000005
+RB6                               00000006
+RB7                               00000007
+RBIE                              00000003
+RBIF                              00000000
+RCIE                              00000005
+RCIF                              00000005
+RCREG                             0000001A
+RCSTA                             00000018
+RD                                00000000
+RP0                               00000005
+RP1                               00000006
+RX9                               00000006
+RX9D                              00000000
+R_ContA                           0000002A
+R_ContB                           0000002B
+R_ContC                           0000002C
+Resta10                           00000131
+RetardoMicros                     000000FA
+Retardo_100micros                 000000F4
+Retardo_100ms                     00000100
+Retardo_10micros                  000000E7
+Retardo_10ms                      00000106
+Retardo_10s                       00000118
+Retardo_1Decima                   00000121
+Retardo_1ms                       0000010C
+Retardo_1s                        0000011E
+Retardo_200micros                 000000F1
+Retardo_200ms                     000000FE
+Retardo_20micros                  000000F9
+Retardo_20ms                      00000104
+Retardo_20s                       00000116
+Retardo_2ms                       0000010A
+Retardo_2s                        0000011C
+Retardo_4micros                   000000ED
+Retardo_500micros                 000000EE
+Retardo_500ms                     00000120
+Retardo_50micros                  000000F6
+Retardo_50ms                      00000102
+Retardo_5micros                   000000EC
+Retardo_5ms                       00000108
+Retardo_5s                        0000011A
+Retardos_ms                       0000010D
+Rmicros_Bucle                     000000FB
+SPBRG                             00000099
+SPEN                              00000007
+SREN                              00000005
+STATUS                            00000003
+MPASM  5.51                 EEPROM_01 628.ASM   10-11-2021  11:54:34         PAGE 15
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+SYNC                              00000004
+T0CS                              00000005
+T0IE                              00000005
+T0IF                              00000002
+T0SE                              00000004
+T1CKPS0                           00000004
+T1CKPS1                           00000005
+T1CON                             00000010
+T1OSCEN                           00000003
+T2CKPS0                           00000000
+T2CKPS1                           00000001
+T2CON                             00000012
+TMR0                              00000001
+TMR0IE                            00000005
+TMR0IF                            00000002
+TMR1                              0000000E
+TMR1CS                            00000001
+TMR1H                             0000000F
+TMR1IE                            00000000
+TMR1IF                            00000000
+TMR1L                             0000000E
+TMR1ON                            00000000
+TMR2                              00000011
+TMR2IE                            00000001
+TMR2IF                            00000001
+TMR2ON                            00000002
+TOUTPS0                           00000003
+TOUTPS1                           00000004
+TOUTPS2                           00000005
+TOUTPS3                           00000006
+TRISA                             00000085
+TRISA0                            00000000
+TRISA1                            00000001
+TRISA2                            00000002
+TRISA3                            00000003
+TRISA4                            00000004
+TRISA5                            00000005
+TRISA6                            00000006
+TRISA7                            00000007
+TRISB                             00000086
+TRISB0                            00000000
+TRISB1                            00000001
+TRISB2                            00000002
+TRISB3                            00000003
+TRISB4                            00000004
+TRISB5                            00000005
+TRISB6                            00000006
+TRISB7                            00000007
+TRMT                              00000001
+TX9                               00000006
+TX9D                              00000000
+TXEN                              00000005
+TXIE                              00000004
+MPASM  5.51                 EEPROM_01 628.ASM   10-11-2021  11:54:34         PAGE 16
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+TXIF                              00000004
+TXREG                             00000019
+TXSTA                             00000098
+Unidades                          0000002F
+VR0                               00000000
+VR1                               00000001
+VR2                               00000002
+VR3                               00000003
+VRCON                             0000009F
+VREN                              00000007
+VROE                              00000006
+VRR                               00000005
+W                                 00000000
+WR                                00000001
+WREN                              00000002
+WRERR                             00000003
+Z                                 00000002
+_BODEN_OFF                        00003FBF
+_BODEN_ON                         00003FFF
+_BOREN_OFF                        00003FBF
+_BOREN_ON                         00003FFF
+_CONFIG                           00002007
+_CPD_OFF                          00003FFF
+_CPD_ON                           00003EFF
+_CP_OFF                           00003FFF
+_CP_ON                            00001FFF
+_DEVID1                           00002006
+_ER_OSC_CLKOUT                    00003FFF
+_ER_OSC_NOCLKOUT                  00003FFE
+_EXTCLK_OSC                       00003FEF
+_FOSC_ECIO                        00003FEF
+_FOSC_EXTRCCLK                    00003FFF
+_FOSC_EXTRCIO                     00003FFE
+_FOSC_HS                          00003FEE
+_FOSC_INTOSCCLK                   00003FFD
+_FOSC_INTOSCIO                    00003FFC
+_FOSC_LP                          00003FEC
+_FOSC_XT                          00003FED
+_HS_OSC                           00003FEE
+_IDLOC0                           00002000
+_IDLOC1                           00002001
+_IDLOC2                           00002002
+_IDLOC3                           00002003
+_INTOSC_OSC_CLKOUT                00003FFD
+_INTOSC_OSC_NOCLKOUT              00003FFC
+_INTRC_OSC_CLKOUT                 00003FFD
+_INTRC_OSC_NOCLKOUT               00003FFC
+_LP_OSC                           00003FEC
+_LVP_OFF                          00003F7F
+_LVP_ON                           00003FFF
+_MCLRE_OFF                        00003FDF
+_MCLRE_ON                         00003FFF
+_PWRTE_OFF                        00003FFF
+MPASM  5.51                 EEPROM_01 628.ASM   10-11-2021  11:54:34         PAGE 17
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_PWRTE_ON                         00003FF7
+_RC_OSC_CLKOUT                    00003FFF
+_RC_OSC_NOCLKOUT                  00003FFE
+_WDTE_OFF                         00003FFB
+_WDTE_ON                          00003FFF
+_WDT_OFF                          00003FFB
+_WDT_ON                           00003FFF
+_XT_OSC                           00003FED
+__16F628A                         00000001
+
+
+MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
+
+0000 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0040 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0080 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+00C0 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0100 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0140 : X--------------- ---------------- ---------------- ----------------
+2000 : -------X-------- ---------------- ---------------- ----------------
+2100 : X--------------- ---------------- ---------------- ----------------
+
+All other memory blocks unused.
+
+Program Memory Words Used:   321
+Program Memory Words Free:  1727
+
+
+Errors   :     0
+Warnings :     4 reported,     0 suppressed
+Messages :    13 reported,     0 suppressed
+
+
