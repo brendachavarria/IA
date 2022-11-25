@@ -1,0 +1,7 @@
+main
+	InicializaContador
+	Visualiza
+	IncremetaVisualiza
+		InicializaContador
+		Visualiza
+	Visualiza2

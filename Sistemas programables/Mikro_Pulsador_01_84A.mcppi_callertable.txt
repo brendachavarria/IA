@@ -1,0 +1,8 @@
+main
+	InicializaContador
+	Visualiza
+		numero_a_7segmentos
+	IncrementaVisualiza
+		InicializaContador
+		Visualiza
+			numero_a_7segmentos

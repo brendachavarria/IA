@@ -1,0 +1,14 @@
+main
+	__CC2DW
+		____DoICP
+	InicializaContador
+	Visualiza
+		ascii_a_7segmentos
+			__CC2DW
+				____DoICP
+	IncrementaVisualiza
+		InicializaContador
+		Visualiza
+			ascii_a_7segmentos
+				__CC2DW
+					____DoICP
